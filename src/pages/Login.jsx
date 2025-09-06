@@ -39,14 +39,6 @@ export default function Login() {
           className="w-full p-2 mb-4 border rounded-lg"
         />
 
-        <input
-          type="text"
-          placeholder="Escola"
-          value={school}
-          onChange={(e) => setSchool(e.target.value)}
-          className="w-full p-2 mb-4 border rounded-lg"
-        />
-
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
         <button
