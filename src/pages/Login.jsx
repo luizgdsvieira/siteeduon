@@ -24,7 +24,7 @@ export default function Login() {
         onSubmit={handleLogin}
         className="bg-gray-800 shadow-lg rounded-xl p-8 w-96"
       >
-        <h1 className="text-3xl font-bold mb-6 text-center">EDUON - Admin</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">EDUON - Gestão Educacional</h1>
         <input
           type="text"
           placeholder="Usuário"
