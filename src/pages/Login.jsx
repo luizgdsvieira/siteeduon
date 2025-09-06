@@ -19,12 +19,12 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-gray-900">
       <form
         onSubmit={handleLogin}
-        className="bg-white shadow-lg rounded-xl p-8 w-96"
+        className="bg-gray-800 shadow-lg rounded-xl p-8 w-96"
       >
-        <h1 className="text-2xl font-bold mb-6 text-center">EDUON - Admin</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">EDUON - Admin</h1>
         <input
           type="text"
           placeholder="Usuário"
@@ -37,11 +37,11 @@ export default function Login() {
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 mb-6 border rounded-lg"
+          className="w-full p-2 mb-6 border-none ng-gray-700 rounded-md"
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
+          className="w-full bg-yellow-400 text-white p-3 rounded-lg hover:bg-blue-700"
         >
           Entrar
         </button>
