@@ -19,52 +19,57 @@ export default function Login() {
   };
 
   return (
-    <div className="relative h-screen w-screen flex items-center justify-center">
+    // 2 colunas: imagem | login
+    <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
+      {/* Coluna da imagem */}
+      <div className="relative">
+        <img
+          src="/images/eduonback.png"
+          alt="Background"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Overlay (opcional) */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
 
-      {/* Overlay escuro para contraste */}
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
+      {/* Coluna do login */}
+      <div className="flex items-center justify-center bg-gray-900">
+        <div className="w-full max-w-md p-8">
+          <h1 className="text-3xl font-bold mb-4 text-white">
+            EDUON - Gestão Educacional
+          </h1>
+          <p className="mb-6 text-gray-300">
+            Gerencie alunos e otimize processos.
+          </p>
 
-      {/* Caixa de login */}
-      <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
-      <img
-        src="/images/eduonback.png"
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover"
-        sizes="max-width: 100vw; max-height: 100vh"
-      />
-        <h1 className="text-3xl font-bold mb-4 text-white text-center">
-          EDUON - Gestão Educacional
-        </h1>
-        <p className="mb-6 text-gray-200 text-center">
-          Gerencie alunos e otimize processos.
-        </p>
-
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Usuário"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            Acessar
-          </button>
-        </form>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Acessar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
 }
+
 
 
 
