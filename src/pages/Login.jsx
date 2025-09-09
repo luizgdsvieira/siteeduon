@@ -20,16 +20,13 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Coluna da imagem */}
-      <div className="hidden md:flex flex-1">
+      <div className="">
         <img
-          src="/images/eduonback.png" // imagem já cortada para evitar áreas brancas
+          src="/images/eduonback.png"
           alt="Background"
           className="object-cover h-full"
         />
       </div>
-
-      {/* Coluna do login */}
       <div className="flex-1 flex justify-center items-center bg-gray-900">
         <div className="h-50 max-w-md p-8">
           <h1 className="text-3xl font-bold mb-4 text-white">
