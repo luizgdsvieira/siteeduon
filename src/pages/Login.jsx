@@ -19,6 +19,77 @@ export default function Login() {
   };
 
   return (
+    <div className="relative flex h-screen items-center justify-center">
+      {/* Imagem de fundo */}
+      <img
+        src="/images/eduonback.png"
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Overlay escuro para dar contraste */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      {/* Conteúdo por cima da imagem */}
+      <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+        <h1 className="text-3xl font-bold mb-4 text-white text-center">
+          EDUON - Gestão Educacional
+        </h1>
+        <p className="mb-6 text-gray-200 text-center">
+          Gerencie alunos e otimize processos.
+        </p>
+
+        <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Usuário"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="button"
+            onClick={handleLogin}
+            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+          >
+            Acessar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/*
+import { useState } from "react";
+import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.post("/auth/login", { username, password });
+      localStorage.setItem("token", res.data.token);
+      navigate("/dashboard");
+    } catch (err) {
+      alert("Login inválido");
+    }
+  };
+
+  return (
     <div className="flex h-screen items-center justify-center bg-gray-900">
       <img 
         src="/images/eduonback.png" 
@@ -57,6 +128,8 @@ export default function Login() {
     </div>
   );
 }
+*/
+
 
 /*
 import { useState } from "react";
