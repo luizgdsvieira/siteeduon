@@ -20,18 +20,18 @@ export default function Login() {
 
   return (
     <div className="relative h-screen w-screen flex items-center justify-center">
-      {/* Imagem de fundo */}
-      <img
-        src="/images/eduonback.png"
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
 
       {/* Overlay escuro para contraste */}
       <div className="absolute inset-0 bg-black bg-opacity-50" />
 
       {/* Caixa de login */}
       <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+      <img
+        src="/images/eduonback.png"
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover"
+        sizes="max-width: 100vw; max-height: 100vh"
+      />
         <h1 className="text-3xl font-bold mb-4 text-white text-center">
           EDUON - Gestão Educacional
         </h1>
