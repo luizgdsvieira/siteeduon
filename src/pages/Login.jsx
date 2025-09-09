@@ -19,18 +19,71 @@ export default function Login() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-black">
-      {/* Imagem de fundo */}
+    <div className="flex h-screen items-center justify-center bg-gray-900">
       <img 
         src="/images/eduonback.png" 
         alt="Background" 
         className="absolute inset-0 w-full h-full object-cover" 
       />
+      <div className="relative w-full max-w-4xl flex items-center">
+        <div className="w-1/2 p-8 text-white">
+          <h1 className="text-4xl font-bold mb-4">EDUON - Gestão Educacional</h1>
+          <p className="mb-6">Gerencie alunos e otimize processos.</p>
+          <div className="space-y-4">
+            <input
+              type="text"
+              placeholder="Usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-3 bg-gray-700 border-none rounded-lg text-white placeholder-gray-400"
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 bg-gray-700 border-none rounded-lg text-white placeholder-gray-400"
+            />
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Acessar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-      {/* Camada para escurecer a imagem e centralizar o formulário */}
-      <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center font-sans">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center">
-          {/* SVG com o texto EDUON */}
+/*
+import { useState } from "react";
+import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.post("/auth/login", { username, password });
+      localStorage.setItem("token", res.data.token);
+      navigate("/dashboard");
+    } catch (err) {
+      alert("Login inválido");
+    }
+  };
+
+  return (
+    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-[#1a1a1a] via-[#232323] to-[#2d2d2d] font-sans">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center">
+         Logo BTG-like  /*
+         <img src="/images/eduonback.png" className="mx-auto h-16 w-16 mb-6" />
           <div className="mb-8">
             <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
               <circle cx="20" cy="20" r="20" fill="#FFD600" />
@@ -74,67 +127,14 @@ export default function Login() {
           <div className="mt-6 text-xs text-gray-400 text-center">
             © {new Date().getFullYear()} EDUON. Todos os direitos reservados.
           </div>
-        </div>
       </div>
     </div>
   );
 }
+*/
 
 /*
-import { useState } from "react";
-import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.post("/auth/login", { username, password });
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
-    } catch (err) {
-      alert("Login inválido");
-    }
-  };
-
-  return (
-    <div className="flex h-screen items-center justify-center bg-gray-900">
-      <div className="relative w-full max-w-4xl flex items-center">
-        <div className="w-1/2 p-8 text-white">
-          <h1 className="text-4xl font-bold mb-4">EDUON - Gestão Educacional</h1>
-          <p className="mb-6">Gerencie alunos e otimize processos.</p>
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Usuário"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-3 bg-gray-700 border-none rounded-lg text-white placeholder-gray-400"
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 bg-gray-700 border-none rounded-lg text-white placeholder-gray-400"
-            />
-            <button
-              type="button"
-              onClick={handleLogin}
-              className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Acessar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 */
 
 /*
