@@ -22,6 +22,10 @@ export default function Login() {
     <div className="flex h-screen items-center justify-center bg-gradient-to-br from-[#1a1a1a] via-[#232323] to-[#2d2d2d] font-sans">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-10 flex flex-col items-center">
         {/* Logo BTG-like */}
+        <div
+          className="h-screen w-screen bg-cover bg-center"
+          style={{ backgroundImage: 'url("/images/background.jpg")' }}
+        >
         <div className="mb-8">
           <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
             <circle cx="20" cy="20" r="20" fill="#FFD600" />
@@ -64,6 +68,7 @@ export default function Login() {
         </form>
         <div className="mt-6 text-xs text-gray-400 text-center">
           © {new Date().getFullYear()} EDUON. Todos os direitos reservados.
+        </div>
         </div>
       </div>
     </div>
