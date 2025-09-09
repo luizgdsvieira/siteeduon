@@ -24,51 +24,51 @@ export default function Login() {
         {/* Logo BTG-like */}
         <div
           className="h-screen w-screen bg-cover bg-center"
-          style={{ backgroundImage: 'url("C:\Users\Luiz Vieira\eduon-site\public\images\eduonback.png")' }}
+          style={{ backgroundImage: 'url("C:\\Users\\Luiz Vieira\\eduon-site\\public\\images\\eduonback.png")' }}
         >
-        <div className="mb-8">
-          <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
-            <circle cx="20" cy="20" r="20" fill="#FFD600" />
-            <text x="45" y="28" fontFamily="Montserrat, Arial, sans-serif" fontWeight="bold" fontSize="28" fill="#232323">EDUON</text>
-          </svg>
-        </div>
-        <h1 className="text-2xl font-bold mb-2 text-[#232323] tracking-wide">Bem-vindo</h1>
-        <p className="mb-8 text-gray-500 text-sm text-center">Acesse sua conta para continuar</p>
-        <form className="w-full" onSubmit={handleLogin}>
-          <div className="mb-6">
-            <label className="block text-xs font-semibold text-gray-700 mb-2" htmlFor="username">Usuário</label>
-            <input
-              id="username"
-              type="text"
-              placeholder="Digite seu usuário"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD600] text-gray-900 bg-gray-50 transition"
-              autoComplete="username"
-            />
-          </div>
           <div className="mb-8">
-            <label className="block text-xs font-semibold text-gray-700 mb-2" htmlFor="password">Senha</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Digite sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD600] text-gray-900 bg-gray-50 transition"
-              autoComplete="current-password"
-            />
+            <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
+              <circle cx="20" cy="20" r="20" fill="#FFD600" />
+              <text x="45" y="28" fontFamily="Montserrat, Arial, sans-serif" fontWeight="bold" fontSize="28" fill="#232323">EDUON</text>
+            </svg>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-[#FFD600] text-[#232323] font-bold py-3 rounded-lg hover:bg-[#ffe066] transition text-lg shadow"
-          >
-            Entrar
-          </button>
-        </form>
-        <div className="mt-6 text-xs text-gray-400 text-center">
-          © {new Date().getFullYear()} EDUON. Todos os direitos reservados.
-        </div>
+          <h1 className="text-2xl font-bold mb-2 text-[#232323] tracking-wide">Bem-vindo</h1>
+          <p className="mb-8 text-gray-500 text-sm text-center">Acesse sua conta para continuar</p>
+          <form className="w-full" onSubmit={handleLogin}>
+            <div className="mb-6">
+              <label className="block text-xs font-semibold text-gray-700 mb-2" htmlFor="username">Usuário</label>
+              <input
+                id="username"
+                type="text"
+                placeholder="Digite seu usuário"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD600] text-gray-900 bg-gray-50 transition"
+                autoComplete="username"
+              />
+            </div>
+            <div className="mb-8">
+              <label className="block text-xs font-semibold text-gray-700 mb-2" htmlFor="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                placeholder="Digite sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD600] text-gray-900 bg-gray-50 transition"
+                autoComplete="current-password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#FFD600] text-[#232323] font-bold py-3 rounded-lg hover:bg-[#ffe066] transition text-lg shadow"
+            >
+              Entrar
+            </button>
+          </form>
+          <div className="mt-6 text-xs text-gray-400 text-center">
+            © {new Date().getFullYear()} EDUON. Todos os direitos reservados.
+          </div>
         </div>
       </div>
     </div>
