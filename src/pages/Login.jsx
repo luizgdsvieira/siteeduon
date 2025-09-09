@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   return (
-    <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
+    <div className="relative h-screen w-screen flex items-center justify-center">
       {/* Imagem de fundo */}
       <img
         src="/images/eduonback.png"
@@ -28,7 +28,7 @@ export default function Login() {
       />
 
       {/* Overlay escuro para contraste */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-50" />
 
       {/* Caixa de login */}
       <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
