@@ -24,7 +24,7 @@ export default function Login() {
         {/* Logo BTG-like */}
         <div
           className="h-screen w-screen bg-cover bg-center"
-          style={{ backgroundImage: 'url("/images/background.jpg")' }}
+          style={{ backgroundImage: 'url("C:\Users\Luiz Vieira\eduon-site\public\images\eduonback.png")' }}
         >
         <div className="mb-8">
           <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
