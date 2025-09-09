@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   return (
-    <div className="relative flex h-screen items-center justify-center">
+    <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
       {/* Imagem de fundo */}
       <img
         src="/images/eduonback.png"
@@ -27,10 +27,10 @@ export default function Login() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Overlay escuro para dar contraste */}
+      {/* Overlay escuro para contraste */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-      {/* Conteúdo por cima da imagem */}
+      {/* Caixa de login */}
       <div className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
         <h1 className="text-3xl font-bold mb-4 text-white text-center">
           EDUON - Gestão Educacional
@@ -39,7 +39,7 @@ export default function Login() {
           Gerencie alunos e otimize processos.
         </p>
 
-        <div className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <input
             type="text"
             placeholder="Usuário"
@@ -55,17 +55,18 @@ export default function Login() {
             className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
-            type="button"
-            onClick={handleLogin}
+            type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
           >
             Acessar
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
 }
+
+
 
 
 /*
