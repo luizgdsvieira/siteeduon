@@ -19,54 +19,48 @@ export default function Login() {
   };
 
   return (
-    // Adicione a classe w-full aqui para garantir que a div ocupe a largura total
-    <div className="w-full">
-      {/* 2 colunas: imagem | login */}
-      <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
-        {/* Coluna da imagem */}
-        <div className="relative">
-          <img
-            src="/images/eduonback.png"
-            alt="Background"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          {/* Overlay (opcional) */}
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+    <div className="flex justify-center items-center min-h-screen">
+      {/* Div da imagem */}
+      <div className="flex-1 hidden md:block">
+        <img
+          src="/images/eduonback.png"
+          alt="Background"
+          className="object-cover w-full h-full"
+        />
+      </div>
 
-        {/* Coluna do login */}
-        <div className="flex items-center justify-center bg-gray-900">
-          <div className="w-full max-w-md p-8">
-            <h1 className="text-3xl font-bold mb-4 text-white">
-              EDUON - Gestão Educacional
-            </h1>
-            <p className="mb-6 text-gray-300">
-              Gerencie alunos e otimize processos.
-            </p>
+      {/* Div do login */}
+      <div className="flex-1 flex justify-center items-center bg-gray-900">
+        <div className="w-full max-w-md p-8">
+          <h1 className="text-3xl font-bold mb-4 text-white">
+            EDUON - Gestão Educacional
+          </h1>
+          <p className="mb-6 text-gray-300">
+            Gerencie alunos e otimize processos.
+          </p>
 
-            <form onSubmit={handleLogin} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Usuário"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="password"
-                placeholder="Senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-              >
-                Acessar
-              </button>
-            </form>
-          </div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 bg-gray-800/80 border-none rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Acessar
+            </button>
+          </form>
         </div>
       </div>
     </div>
