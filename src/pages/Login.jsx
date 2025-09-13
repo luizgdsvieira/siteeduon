@@ -9,13 +9,13 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex-row min-h-screen">
       {/* Coluna da imagem */}
-      <div className="hidden md:flex w-1/2">
+      <div className="hidden md:block md:w-1/2 h-screen">
         <img
           src="/images/eduonback.png"
           alt="Background"
-          className="w-1 h-full object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
       {/* Coluna do login */}
