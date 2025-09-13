@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="min-h-screen flex flex-col md:flex-row">
       {/* Div da imagem (some no mobile, aparece do md pra cima) */}
       <div className="hidden md:block md:w-1/2">
         <img
