@@ -9,13 +9,13 @@ export default function Login() {
   };
 
   return (
-    <div className="flex-row">
+    <div className="">
       {/* Coluna da imagem */}
       <div className="">
         <img
           src="/images/eduonback.png"
           alt="Background"
-          className="object-cover"
+          className=""
         />
       </div>
       {/* Coluna do login */}
