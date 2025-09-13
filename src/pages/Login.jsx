@@ -9,7 +9,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex-row min-h-screen">
+    <div className="flex-row">
       {/* Coluna da imagem */}
       <div className="">
         <img
@@ -19,8 +19,8 @@ export default function Login() {
         />
       </div>
       {/* Coluna do login */}
-      <div className="flex items-center bg-gray-900">
-        <div className="w-full max-w-md p-8">
+      <div className="items-center bg-gray-900">
+        <div className="">
           <h1 className="text-3xl font-bold mb-4 text-white">
             EDUON – Gestão Educacional
           </h1>
