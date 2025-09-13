@@ -9,9 +9,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="grid min-h-screen">
       {/* Coluna da imagem */}
-      <div className="hidden md:flex w-1/2">
+      <div className="hidden md:grid w-1/2">
         <img
           src="/images/eduonback.png"
           alt="Background"
@@ -19,7 +19,7 @@ export default function Login() {
         />
       </div>
       {/* Coluna do login */}
-      <div className="flex w-full md:w-1/2 justify-center items-center bg-gray-900">
+      <div className="grid w-full md:w-1/2 justify-center items-center bg-gray-900">
         <div className="w-full max-w-md p-8">
           <h1 className="text-3xl font-bold mb-4 text-white">
             EDUON – Gestão Educacional
