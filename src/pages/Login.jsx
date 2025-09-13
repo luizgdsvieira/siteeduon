@@ -19,19 +19,19 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
-      {/* Div da imagem (some no mobile, aparece do md pra cima) */}
-      <div className="hidden md:block md:w-1/2">
+    <div className="flex min-h-screen">
+      {/* Coluna da imagem */}
+      <div className="hidden md:flex w-1/2">
         <img
           src="/images/eduonback.png"
           alt="Background"
-          className="object-cover w-full h-full"
+          className="w-full h-full object-cover"
         />
       </div>
 
-      {/* Div do login */}
-      <div className="w-full md:w-1/2 flex justify-center items-center bg-gray-900">
-        <div className="max-w-md p-8">
+      {/* Coluna do login */}
+      <div className="flex w-full md:w-1/2 justify-center items-center bg-gray-900">
+        <div className="w-full max-w-md p-8">
           <h1 className="text-3xl font-bold mb-4 text-white">
             EDUON - Gestão Educacional
           </h1>
