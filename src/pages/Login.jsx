@@ -15,7 +15,7 @@ export default function Login() {
         <img
           src="/images/eduonback.png"
           alt="Background"
-          className="w-1/2 h-screen object-cover"
+          className="w-1/2 h-full object-cover"
         />
       </div>
       {/* Coluna do login */}
