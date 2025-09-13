@@ -13,9 +13,9 @@ export default function Login() {
       {/* Coluna da imagem */}
       <div className="hidden md:flex w-1/2">
         <img
-          src="/images/edunoback.png"
+          src="/images/eduonback.png"
           alt="Background"
-          className="w-full h-screen object-cover"
+          className="w-1/2 h-screen object-cover"
         />
       </div>
       {/* Coluna do login */}
