@@ -3,25 +3,135 @@ import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    alert("Login inválido");
+    try {
+      const res = await api.post("/auth/login", { username, password });
+      localStorage.setItem("token", res.data.token);
+      navigate("/dashboard");
+    } catch (err) {
+      alert("Login inválido");
+    }
   };
 
   return (
-    
-    <div className="flex min-h-screen">
-      <div className="w-1/2 bg-blue-500 flex items-center justify-center">
-        <p className="text-white text-2xl">IMAGEM</p>
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        width: "100%",
+      }}
+    >
+      {/* Lado esquerdo - Imagem */}
+      <div
+        style={{
+          flex: 1,
+          display: "none",
+          backgroundColor: "#000",
+        }}
+        className="md:block"
+      >
+        <img
+          src="/images/eduonback.png"
+          alt="Background"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </div>
-      <div className="w-1/2 bg-gray-900 flex items-center justify-center">
-        <p className="text-white text-2xl">LOGIN</p>
+
+      {/* Lado direito - Formulário */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#111827",
+        }}
+      >
+        <div style={{ width: "100%", maxWidth: "400px", padding: "2rem" }}>
+          <h1
+            style={{
+              fontSize: "1.875rem",
+              fontWeight: "bold",
+              marginBottom: "1rem",
+              color: "white",
+            }}
+          >
+            EDUON - Gestão Educacional
+          </h1>
+          <p
+            style={{
+              marginBottom: "1.5rem",
+              color: "#d1d5db",
+            }}
+          >
+            Gerencie alunos e otimize processos.
+          </p>
+
+          <form onSubmit={handleLogin}>
+            <input
+              type="text"
+              placeholder="Usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "0.75rem",
+                marginBottom: "1rem",
+                backgroundColor: "rgba(31,41,55,0.8)",
+                border: "none",
+                borderRadius: "0.5rem",
+                color: "white",
+                outline: "none",
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "0.75rem",
+                marginBottom: "1rem",
+                backgroundColor: "rgba(31,41,55,0.8)",
+                border: "none",
+                borderRadius: "0.5rem",
+                color: "white",
+                outline: "none",
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+                padding: "0.75rem",
+                backgroundColor: "#2563eb",
+                borderRadius: "0.5rem",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#1d4ed8")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#2563eb")}
+            >
+              Acessar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
 }
-
-
 
 
 /*
@@ -94,6 +204,7 @@ export default function Login() {
   );
 }
 */
+
 
 /*
 import { useState } from "react";
