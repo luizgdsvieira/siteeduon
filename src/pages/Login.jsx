@@ -9,47 +9,47 @@ export default function Login() {
   };
 
   return (
-    <div className="">
-      {/* Coluna da imagem */}
-      <div className="">
-        <img
-          src="/images/eduonback.png"
-          alt="Background"
-          className=""
-        />
-      </div>
-      {/* Coluna do login */}
-      <div className="items-center bg-gray-900">
+    
+    <><div className="flex bg-red-500 min-h-screen items-center justify-center">
+      <h1 className="text-white text-5xl font-bold">Tailwind está funcionando?</h1>
+    </div><div className="">
+        {/* Coluna da imagem */}
         <div className="">
-          <h1 className="text-3xl font-bold mb-4 text-white">
-            EDUON – Gestão Educacional
-          </h1>
-
-          <p className="mb-6 text-gray-300">
-            Gerencie alunos e otimize processos.
-          </p>
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <input
-              type="text"
-              placeholder="Usuário"
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              className="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition"
-            >
-              Entrar
-            </button>
-          </form>
+          <img
+            src="/images/eduonback.png"
+            alt="Background"
+            className="" />
         </div>
-      </div>
-    </div>
+        {/* Coluna do login */}
+        <div className="items-center bg-gray-900">
+          <div className="">
+            <h1 className="text-3xl font-bold mb-4 text-white">
+              EDUON – Gestão Educacional
+            </h1>
+
+            <p className="mb-6 text-gray-300">
+              Gerencie alunos e otimize processos.
+            </p>
+
+            <form onSubmit={handleLogin} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Usuário"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input
+                type="password"
+                placeholder="Senha"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition"
+              >
+                Entrar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div></>
   );
 }
 
