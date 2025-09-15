@@ -1,13 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Adicione estilos globais aqui, se necessário */
-body {
-  font-family: 'Inter', sans-serif; /* Exemplo de fonte */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #12171f; /* Exemplo de fundo escuro como o BTG */
-  color: #ffffff; /* Cor de texto padrão */
-}
