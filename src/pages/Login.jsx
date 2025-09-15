@@ -11,12 +11,9 @@ export default function Login() {
   return (
     
     <div className="flex min-h-screen">
-      {/* Coluna da imagem */}
       <div className="w-1/2 bg-blue-500 flex items-center justify-center">
         <p className="text-white text-2xl">IMAGEM</p>
       </div>
-
-      {/* Coluna do login */}
       <div className="w-1/2 bg-gray-900 flex items-center justify-center">
         <p className="text-white text-2xl">LOGIN</p>
       </div>
