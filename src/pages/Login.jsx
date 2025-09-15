@@ -30,7 +30,6 @@ export default function Login() {
       <div
         style={{
           flex: 1,
-          display: "none",
           backgroundColor: "#000",
         }}
         className="md:block"
