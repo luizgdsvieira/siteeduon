@@ -18,21 +18,31 @@ export default function Login() {
     }
   };
 
+  // altura fixa para inputs/btn (garante aparência idêntica)
+  const controlHeight = "48px";
+  const borderRadius = "8px";
+
   return (
     <div
       style={{
+        position: "fixed",     // garante ocupar exatamente a viewport
+        inset: 0,              // top:0; right:0; bottom:0; left:0;
         display: "flex",
-        minHeight: "100vh",
         width: "100%",
+        height: "100%",
+        overflow: "hidden",    // evita barras de rolagem provocadas por pequenas diferenças
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+        backgroundColor: "#0b1220",
       }}
     >
       {/* Lado esquerdo - Imagem */}
       <div
         style={{
           flex: 1,
-          backgroundColor: "#000",
+          minWidth: 0,         // importante para flex items reduzirem corretamente
+          height: "100%",
         }}
-        className="md:block"
       >
         <img
           src="/images/eduonback.png"
@@ -41,6 +51,9 @@ export default function Login() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            display: "block",   // elimina gap de baseline que pode gerar scroll
+            userSelect: "none",
+            pointerEvents: "none",
           }}
         />
       </div>
@@ -52,24 +65,34 @@ export default function Login() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#111827",
+          height: "100%",
+          backgroundColor: "#0b1220",
+          padding: "24px",
+          boxSizing: "border-box",
         }}
       >
-        <div style={{ width: "100%", maxWidth: "400px", padding: "2rem" }}>
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "420px",
+            padding: "32px",
+            boxSizing: "border-box",
+          }}
+        >
           <h1
             style={{
-              fontSize: "1.875rem",
-              fontWeight: "bold",
-              marginBottom: "1rem",
-              color: "white",
+              fontSize: "1.300rem",
+              fontWeight: 3000,
+              marginBottom: "20px",
+              color: "#ffffff",
             }}
           >
             EDUON - Gestão Educacional
           </h1>
           <p
             style={{
-              marginBottom: "1.5rem",
-              color: "#d1d5db",
+              marginBottom: "20px",
+              color: "#cbd5e1",
             }}
           >
             Gerencie alunos e otimize processos.
@@ -83,15 +106,19 @@ export default function Login() {
               onChange={(e) => setUsername(e.target.value)}
               style={{
                 width: "100%",
-                padding: "0.75rem",
-                marginBottom: "1rem",
-                backgroundColor: "rgba(31,41,55,0.8)",
+                height: controlHeight,        // altura fixa
+                padding: "0 12px",
+                marginBottom: "12px",
+                backgroundColor: "rgba(31,41,55,0.85)",
                 border: "none",
-                borderRadius: "0.5rem",
+                borderRadius,
                 color: "white",
                 outline: "none",
+                boxSizing: "border-box",
+                fontSize: "16px",
               }}
             />
+
             <input
               type="password"
               placeholder="Senha"
@@ -99,32 +126,52 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               style={{
                 width: "100%",
-                padding: "0.75rem",
-                marginBottom: "1rem",
-                backgroundColor: "rgba(31,41,55,0.8)",
+                height: controlHeight,       // mesma altura que o input acima
+                padding: "0 12px",
+                marginBottom: "16px",
+                backgroundColor: "rgba(31,41,55,0.85)",
                 border: "none",
-                borderRadius: "0.5rem",
+                borderRadius,
                 color: "white",
                 outline: "none",
+                boxSizing: "border-box",
+                fontSize: "16px",
               }}
             />
+
             <button
               type="submit"
               style={{
                 width: "100%",
-                padding: "0.75rem",
-                backgroundColor: "#2563eb",
-                borderRadius: "0.5rem",
-                color: "white",
+                height: controlHeight,       // mesma altura exata do input
+                borderRadius,
                 border: "none",
                 cursor: "pointer",
-                transition: "0.3s",
+                display: "inline-flex",      // centraliza verticalmente o texto
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "16px",
+                backgroundColor: "#2563eb",
+                color: "#fff",
+                boxSizing: "border-box",
+                transition: "background-color 0.15s ease",
               }}
-              onMouseOver={(e) => (e.target.style.backgroundColor = "#1d4ed8")}
-              onMouseOut={(e) => (e.target.style.backgroundColor = "#2563eb")}
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#1e40af")}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#2563eb")}
             >
               Acessar
             </button>
+            <p
+            style={{
+              marginBottom: "20px",
+              color: "#cbd5e1",
+              fontSize: "10px",
+              textAlign: "center",                
+            }}
+          >
+            Powered by EDUON.
+          </p>
+
           </form>
         </div>
       </div>
