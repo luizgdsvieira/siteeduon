@@ -26,6 +26,29 @@ export default function Dashboard() {
   );
 }
 
+/*
+import { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Alunos from "./Alunos";
+import Funcionarios from "./Funcionarios";
+import Escola from "./Escola";
+
+export default function Dashboard() {
+  const [tab, setTab] = useState("alunos");
+
+  return (
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar tab={tab} setTab={setTab} />
+      <div className="flex-1 p-6 overflow-y-auto">
+        {tab === "alunos" && <Alunos />}
+        {tab === "funcionarios" && <Funcionarios />}
+        {tab === "escola" && <Escola />}
+      </div>
+    </div>
+  );
+}
+*/
+
 
 
 /*

@@ -1,0 +1,105 @@
+-- ===========================
+-- Tabela: Escolas
+-- ===========================
+create table if not exists schools (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  cnpj text,
+  created_at timestamptz default now()
+);
+
+-- ===========================
+-- Tabela: Licenças
+-- ===========================
+create table if not exists licenses (
+  id uuid primary key default gen_random_uuid(),
+  school_id uuid references schools(id) on delete cascade,
+  seats integer default 0,
+  start_date date not null,
+  end_date date not null,
+  active boolean default true,
+  created_at timestamptz default now()
+);
+
+-- índice para buscar licenças por escola
+create index if not exists idx_licenses_school_id on licenses(school_id);
+
+-- ===========================
+-- Tabela: Alunos
+-- ===========================
+create table if not exists students (
+  id uuid primary key default gen_random_uuid(),
+  school_id uuid references schools(id) on delete cascade,
+  name text not null,
+  matricula text not null,
+  ano text,
+  turma text,
+  turno text,
+  nascimento date,
+  qrcode_token text,
+  created_at timestamptz default now()
+);
+
+-- garantir matrícula única dentro da escola
+create unique index if not exists idx_students_unique_matricula
+  on students(school_id, matricula);
+
+-- índice para buscas rápidas
+create index if not exists idx_students_school_id on students(school_id);
+
+-- ===========================
+-- Tabela: Funcionários
+-- ===========================
+create table if not exists staff (
+  id uuid primary key default gen_random_uuid(),
+  school_id uuid references schools(id) on delete cascade,
+  name text not null,
+  cargo text,
+  nascimento date,
+  created_at timestamptz default now()
+);
+
+create index if not exists idx_staff_school_id on staff(school_id);
+
+-- ===========================
+-- Tabela: Usuários de Login
+-- ===========================
+create table if not exists users (
+  id uuid primary key default gen_random_uuid(),
+  school_id uuid references schools(id) on delete cascade,
+  username text unique not null,
+  password_hash text not null,
+  role text not null check (role in ('admin', 'student', 'staff')),
+  student_id uuid references students(id) on delete set null,
+  staff_id uuid references staff(id) on delete set null,
+  created_at timestamptz default now()
+);
+
+-- índices para relacionamentos
+create index if not exists idx_users_school_id on users(school_id);
+create index if not exists idx_users_student_id on users(student_id);
+create index if not exists idx_users_staff_id on users(staff_id);
+
+-- ===========================
+-- Tabela: Auditoria (opcional)
+-- ===========================
+create table if not exists audits (
+  id bigserial primary key,
+  user_id uuid references users(id) on delete set null,
+  action text not null,
+  payload jsonb,
+  created_at timestamptz default now()
+);
+
+create index if not exists idx_audits_user_id on audits(user_id);
+create index if not exists idx_audits_created_at on audits(created_at);
+
+-- ===========================
+-- Finalização
+-- ===========================
+comment on table schools is 'Escolas que contratam o EDUON';
+comment on table licenses is 'Licenças ativas por escola';
+comment on table students is 'Alunos cadastrados';
+comment on table staff is 'Funcionários cadastrados';
+comment on table users is 'Contas de login (alunos, funcionários, admins)';
+comment on table audits is 'Log de auditoria de ações no sistema';
