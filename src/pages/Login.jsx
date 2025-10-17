@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [password_hash, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -122,7 +122,7 @@ export default function Login() {
             <input
               type="password"
               placeholder="Senha"
-              value={password}
+              value={password_hash}
               onChange={(e) => setPassword(e.target.value)}
               style={{
                 width: "100%",
