@@ -93,7 +93,7 @@ export default function Login() {
             >
               EDUON
             </h1>
-            <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(255,255,255,0.85)" }}>
+            <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(10, 17, 40, 0.85)" }}>
               Gestão de alunos e carteirinha digital
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Login() {
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
+            <h2 style={{ margin: 5, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
             
 
             {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
@@ -221,14 +221,6 @@ export default function Login() {
                 >
                   Esqueci minha senha
                 </a>
-                <a
-                  href="#"
-                  style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
-                  onMouseOver={(e) => (e.target.style.color = "#ffffff")}
-                  onMouseOut={(e) => (e.target.style.color = "rgba(255,255,255,0.7)")}
-                >
-                  Ajuda
-                </a>
               </div>
             </form>
           </div>
@@ -241,7 +233,7 @@ export default function Login() {
           marginTop: `${HEADER_HEIGHT}px`, // desloca conteúdo para baixo do header fixo
           display: "flex",
           width: "100%",
-          minHeight: "520px", // aumentei ainda mais para destacar
+          minHeight: "580px", // aumentei ainda mais para destacar
           boxSizing: "border-box",
           // degradê de fundo solicitado
           background:
@@ -265,7 +257,7 @@ export default function Login() {
           </h3>
 
           {/* imagem exemplo (se existir no public): */}
-          <div style={{ width: "320px", maxWidth: "90%", marginBottom: 18 }}>
+          <div style={{ width: "320px", maxWidth: "90%", marginBottom: 12 }}>
             <img src="/images/celular.png" alt="EDUON Mobile" style={{ width: "100%", borderRadius: 12 }} />
           </div>
 
