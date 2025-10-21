@@ -27,6 +27,8 @@ export default function Login() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const HEADER_HEIGHT = 180; // mantenha consistente com styles abaixo
+
   return (
     <div
       ref={containerRef}
@@ -43,16 +45,21 @@ export default function Login() {
         backgroundColor: "#0A1128",
       }}
     >
-      {/* =========  PRIMEIRA SEÇÃO (reduzida)  ========= */}
+      {/* =========  PRIMEIRA SEÇÃO (FIXA NO TOPO)  ========= */}
       <div
         style={{
-          width: "100%",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: `${HEADER_HEIGHT}px`,
           boxSizing: "border-box",
           backgroundColor: "#ffffff", // área branca
-          height: "180px", // altura reduzida conforme pedido
           display: "flex",
           alignItems: "center",
           padding: "0 20px",
+          zIndex: 1200,
+          borderBottom: "1px solid rgba(10,17,40,0.06)",
         }}
       >
         <div
@@ -78,7 +85,7 @@ export default function Login() {
             <h1
               style={{
                 margin: 0,
-                color: "#000000",
+                color: "#0A1128",
                 fontSize: "2.25rem",
                 fontWeight: 800,
                 letterSpacing: "1px",
@@ -91,7 +98,7 @@ export default function Login() {
           {/* Lado direito: cartão de login (menor) */}
           <div
             style={{
-              width: "420px",
+              width: "480px",
               transform: "scale(0.95)",
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
@@ -102,7 +109,7 @@ export default function Login() {
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700 }}>Entrar na EDUON</h2>
+            <h2 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
             <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(255,255,255,0.85)" }}>
               Gestão de alunos e carteirinha digital
             </p>
@@ -227,30 +234,40 @@ export default function Login() {
         </div>
       </div>
 
-      {/* =========  SEGUNDA SEÇÃO (altura aumentada)  ========= */}
+      {/* =========  SEGUNDA SEÇÃO (com margem-top para não ficar abaixo do header fixo)  ========= */}
       <div
         style={{
+          marginTop: `${HEADER_HEIGHT}px`, // desloca conteúdo para baixo do header fixo
           display: "flex",
           width: "100%",
-          minHeight: "420px", // aumentei a altura da segunda seção
+          minHeight: "520px", // aumentei ainda mais para destacar
           boxSizing: "border-box",
+          // degradê de fundo solicitado
+          background:
+            "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
         }}
       >
         <div
           style={{
             flex: 1,
-            backgroundColor: "#1E3A8A",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             padding: "40px",
             boxSizing: "border-box",
+            color: "#ffffff",
           }}
         >
           <h3 style={{ fontSize: "1.75rem", fontWeight: "bold", color: "#ffffff", marginBottom: "12px" }}>
             EDUON Mobile
           </h3>
+
+          {/* imagem exemplo (se existir no public): */}
+          <div style={{ width: "320px", maxWidth: "90%", marginBottom: 18 }}>
+            <img src="/images/celular.png" alt="EDUON Mobile" style={{ width: "100%", borderRadius: 12 }} />
+          </div>
+
           <p style={{ fontSize: "1.05rem", color: "#ffffff", marginBottom: "24px", textAlign: "center" }}>
             Baixe o app para gestão educacional
           </p>
@@ -271,24 +288,7 @@ export default function Login() {
                 gap: "8px",
               }}
             >
-              📱 App Store
-            </button>
-            <button
-              style={{
-                backgroundColor: "#ffffff",
-                color: "#000000",
-                border: "none",
-                borderRadius: "10px",
-                padding: "10px 18px",
-                fontSize: "13px",
-                fontWeight: "600",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              🤖 Google Play
+              Google Play
             </button>
           </div>
         </div>
@@ -448,7 +448,7 @@ export default function Login() {
           justifyContent: "center",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
           transition: "all 0.2s ease",
-          zIndex: 1000,
+          zIndex: 1300,
         }}
         onMouseOver={(e) => {
           e.currentTarget.style.backgroundColor = "#475569";
