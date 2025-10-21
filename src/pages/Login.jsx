@@ -481,6 +481,304 @@ export default function Login() {
           </button>
         </div>
       </div>
+
+      {/* Nova Seção com Ícones de Aplicativos */}
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "250px",
+          backgroundColor: "#0A1128",
+          padding: "40px",
+          boxSizing: "border-box",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "100%",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* Ícone 1 - Gestão de Alunos */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
+              {/* SUBSTITUA ESTA IMAGEM: coloque aqui o ícone de gestão de alunos */}
+              <span style={{ fontSize: "32px" }}>👥</span>
+            </div>
+            <h4
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#ffffff",
+                margin: "0 0 5px 0",
+              }}
+            >
+              Gestão de Alunos
+            </h4>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94A3B8",
+                margin: "0",
+                maxWidth: "120px",
+              }}
+            >
+              Controle completo dos estudantes
+            </p>
+          </div>
+
+          {/* Ícone 2 - Relatórios */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
+              {/* SUBSTITUA ESTA IMAGEM: coloque aqui o ícone de relatórios */}
+              <span style={{ fontSize: "32px" }}>📊</span>
+            </div>
+            <h4
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#ffffff",
+                margin: "0 0 5px 0",
+              }}
+            >
+              Relatórios
+            </h4>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94A3B8",
+                margin: "0",
+                maxWidth: "120px",
+              }}
+            >
+              Análises e dados em tempo real
+            </p>
+          </div>
+
+          {/* Ícone 3 - Carteirinha Digital */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
+              {/* SUBSTITUA ESTA IMAGEM: coloque aqui o ícone de carteirinha digital */}
+              <span style={{ fontSize: "32px" }}>🎫</span>
+            </div>
+            <h4
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#ffffff",
+                margin: "0 0 5px 0",
+              }}
+            >
+              Carteirinha Digital
+            </h4>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94A3B8",
+                margin: "0",
+                maxWidth: "120px",
+              }}
+            >
+              Identificação digital dos alunos
+            </p>
+          </div>
+
+          {/* Ícone 4 - Comunicação */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
+              {/* SUBSTITUA ESTA IMAGEM: coloque aqui o ícone de comunicação */}
+              <span style={{ fontSize: "32px" }}>💬</span>
+            </div>
+            <h4
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#ffffff",
+                margin: "0 0 5px 0",
+              }}
+            >
+              Comunicação
+            </h4>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94A3B8",
+                margin: "0",
+                maxWidth: "120px",
+              }}
+            >
+              Conecte escola e família
+            </p>
+          </div>
+
+          {/* Ícone 5 - Acompanhamento */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
+              {/* SUBSTITUA ESTA IMAGEM: coloque aqui o ícone de acompanhamento pedagógico */}
+              <span style={{ fontSize: "32px" }}>📈</span>
+            </div>
+            <h4
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#ffffff",
+                margin: "0 0 5px 0",
+              }}
+            >
+              Acompanhamento
+            </h4>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94A3B8",
+                margin: "0",
+                maxWidth: "120px",
+              }}
+            >
+              Progresso pedagógico dos alunos
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Botão Voltar ao Topo */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          width: "50px",
+          height: "50px",
+          backgroundColor: "#64748B",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+          transition: "all 0.2s ease",
+          zIndex: 1000,
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.backgroundColor = "#475569";
+          e.currentTarget.style.transform = "translateY(-2px)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.backgroundColor = "#64748B";
+          e.currentTarget.style.transform = "translateY(0)";
+        }}
+      >
+        <span
+          style={{
+            color: "#ffffff",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          ↑
+        </span>
+      </button>
     </div>
   );
 }
