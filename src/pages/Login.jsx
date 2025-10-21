@@ -27,7 +27,7 @@ export default function Login() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const HEADER_HEIGHT = 180; // mantenha consistente com styles abaixo
+  const HEADER_HEIGHT = 150; // mantenha consistente com styles abaixo
 
   return (
     <div
@@ -85,7 +85,7 @@ export default function Login() {
             <h1
               style={{
                 margin: 0,
-                color: "#0A1128",
+                color: "rgba(10, 17, 40)",
                 fontSize: "2.25rem",
                 fontWeight: 800,
                 letterSpacing: "1px",
@@ -93,6 +93,9 @@ export default function Login() {
             >
               EDUON
             </h1>
+            <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(255,255,255,0.85)" }}>
+              Gestão de alunos e carteirinha digital
+            </p>
           </div>
 
           {/* Lado direito: cartão de login (menor) */}
@@ -110,9 +113,7 @@ export default function Login() {
             }}
           >
             <h2 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
-            <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(255,255,255,0.85)" }}>
-              Gestão de alunos e carteirinha digital
-            </p>
+            
 
             {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
             <form onSubmit={handleLogin}>
