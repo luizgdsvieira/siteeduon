@@ -51,7 +51,7 @@ export default function Login() {
             alignItems: "center",
             padding: "40px 20px",
             boxSizing: "border-box",
-            backgroundColor: "#0A1128",
+            backgroundColor: "#dfe2eb",
           }}
         >
           <div style={{ width: "100%", maxWidth: "900px", display: "flex", gap: "40px", flexDirection: "column" }}>
@@ -68,7 +68,7 @@ export default function Login() {
                   fontSize: "2rem",
                   fontWeight: "700",
                   marginBottom: "12px",
-                  color: "#ffffff",
+                  color: "#0f0e0e",
                   lineHeight: "1.1",
                 }}
               >
@@ -78,7 +78,7 @@ export default function Login() {
                 style={{
                   fontSize: "1rem",
                   marginBottom: "20px",
-                  color: "#ffffff",
+                  color: "#0f0e0e",
                   lineHeight: "1.4",
                 }}
               >
@@ -93,7 +93,7 @@ export default function Login() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     style={{
-                      width: "100%",
+                      width: "50%",
                       height: "48px",
                       padding: "0 12px",
                       backgroundColor: "rgba(255, 255, 255, 0.08)",
@@ -123,7 +123,7 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     style={{
-                      width: "100%",
+                      width: "50%",
                       height: "48px",
                       padding: "0 12px",
                       backgroundColor: "rgba(255, 255, 255, 0.08)",
@@ -149,7 +149,7 @@ export default function Login() {
                 <button
                   type="submit"
                   style={{
-                    width: "100%",
+                    width: "50%",
                     height: "48px",
                     borderRadius: "10px",
                     border: "none",
@@ -308,27 +308,6 @@ export default function Login() {
             boxSizing: "border-box",
           }}
         >
-          <h3 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#ffffff", marginBottom: "8px" }}>
-            EDUON Web
-          </h3>
-          <p style={{ fontSize: "1rem", color: "#ffffff", marginBottom: "20px", textAlign: "center" }}>
-            Acesse a plataforma web completa
-          </p>
-
-          <button
-            style={{
-              backgroundColor: "#4A9EFF",
-              color: "#ffffff",
-              border: "none",
-              borderRadius: "8px",
-              padding: "12px 24px",
-              fontSize: "14px",
-              fontWeight: "600",
-              cursor: "pointer",
-            }}
-          >
-            Acessar Plataforma
-          </button>
         </div>
       </div>
 
