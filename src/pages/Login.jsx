@@ -93,7 +93,7 @@ export default function Login() {
             >
               EDUON
             </h1>
-            <p style={{ marginTop: 15, marginBottom: 6, fontSize: "1rem", color: "rgba(10, 17, 40, 0.85)" }}>
+            <p style={{ marginTop: 19, marginBottom: 6, fontSize: "1rem", color: "rgba(10, 17, 40, 0.85)" }}>
               Gestão de alunos e carteirinha digital
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Login() {
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ margin: 10, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
+            <h2 style={{ marginBottom: 10, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
             
 
             {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
