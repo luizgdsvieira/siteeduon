@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const containerRef = useRef(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,217 +19,181 @@ export default function Login() {
     }
   };
 
+  const scrollToTop = () => {
+    if (containerRef.current && typeof containerRef.current.scrollTo === "function") {
+      containerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div
+      ref={containerRef}
       style={{
         position: "fixed",
         inset: 0,
         display: "flex",
-        flexDirection: "column", // empilha verticalmente
+        flexDirection: "column",
         width: "100%",
         height: "100%",
-        overflowY: "auto", // permitir scroll vertical para ver as seções abaixo
+        overflowY: "auto",
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        backgroundColor: "#0A1128",
+        backgroundColor: "#0A1128", // mantém o fundo geral escuro por trás das seções
       }}
     >
-      {/* Conteúdo principal (agora empilhado) */}
+      {/* Área do topo: agora com fundo branco onde o formulário fica destacado */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column", // coloca o login em cima, promo abaixo (se quiser inverter, mude para "column-reverse")
           width: "100%",
           boxSizing: "border-box",
+          backgroundColor: "#ffffff", // fundo branco da área de login (invertido)
+          padding: "40px 20px",
         }}
       >
-        {/* Colocar primeiro o bloco do login (aparece em cima) */}
         <div
           style={{
             width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "40px 20px",
+            maxWidth: "1200px",
+            margin: "0 auto",
             boxSizing: "border-box",
-            backgroundColor: "#dfe2eb",
+            display: "flex",
+            justifyContent: "flex-end", // posiciona o conteúdo à direita
+            alignItems: "flex-start",
           }}
         >
-          <div style={{ width: "100%", maxWidth: "900px", display: "flex", gap: "40px", flexDirection: "column" }}>
-            {/* Aqui você pode manter o visual promocional acima ou abaixo do formulário.
-                Vou colocar apenas o formulário (login) primeiro. */}
-            <div
-              style={{
-                background: "transparent",
-                width: "100%",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: "700",
-                  marginBottom: "12px",
-                  color: "#0f0e0e",
-                  lineHeight: "1.1",
-                }}
-              >
-                EDUON: uma plataforma completa para sua escola
-              </h2>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  marginBottom: "20px",
-                  color: "#0f0e0e",
-                  lineHeight: "1.4",
-                }}
-              >
-                Gestão de alunos, acompanhamento pedagógico e relatórios em tempo real. Transforme a educação com tecnologia.
-              </p>
+          {/* Cartão de login em azul, menor (escala reduzida) e alinhado ao canto direito */}
+          <div
+            style={{
+              width: "360px", // escala menor
+              transform: "scale(0.95)",
+              transformOrigin: "top right",
+              backgroundColor: "#0A66FF", // formulário em azul
+              color: "#ffffff",
+              borderRadius: "14px",
+              padding: "24px",
+              boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
+              boxSizing: "border-box",
+            }}
+          >
+            <h2 style={{ margin: 0, fontSize: "1.25rem", fontWeight: 700 }}>Entrar na EDUON</h2>
+            <p style={{ marginTop: 8, marginBottom: 18, fontSize: "0.95rem", color: "rgba(255,255,255,0.85)" }}>
+              Gestão de alunos e carteirinha digital
+            </p>
 
-              <form onSubmit={handleLogin}>
-                <div style={{ marginBottom: "16px" }}>
-                  <input
-                    type="text"
-                    placeholder="Usuário ou email"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    style={{
-                      width: "50%",
-                      height: "48px",
-                      padding: "0 12px",
-                      backgroundColor: "rgba(255, 255, 255, 0.08)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "10px",
-                      color: "#ffffff",
-                      outline: "none",
-                      boxSizing: "border-box",
-                      fontSize: "15px",
-                      transition: "all 0.15s ease",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4A9EFF";
-                      e.target.style.backgroundColor = "rgba(255, 255, 255, 0.12)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(255, 255, 255, 0.12)";
-                      e.target.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
-                    }}
-                  />
-                </div>
-
-                <div style={{ marginBottom: "18px" }}>
-                  <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{
-                      width: "50%",
-                      height: "48px",
-                      padding: "0 12px",
-                      backgroundColor: "rgba(255, 255, 255, 0.08)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "10px",
-                      color: "#ffffff",
-                      outline: "none",
-                      boxSizing: "border-box",
-                      fontSize: "15px",
-                      transition: "all 0.15s ease",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4A9EFF";
-                      e.target.style.backgroundColor = "rgba(255, 255, 255, 0.12)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(255, 255, 255, 0.12)";
-                      e.target.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
-                    }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
+            <form onSubmit={handleLogin}>
+              <div style={{ marginBottom: "12px" }}>
+                <input
+                  type="text"
+                  placeholder="Usuário ou email"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   style={{
-                    width: "50%",
-                    height: "48px",
+                    width: "100%",
+                    height: "44px",
+                    padding: "0 12px",
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.15)",
                     borderRadius: "10px",
-                    border: "none",
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "15px",
-                    fontWeight: "600",
-                    backgroundColor: "#4A9EFF",
                     color: "#ffffff",
+                    outline: "none",
                     boxSizing: "border-box",
-                    transition: "all 0.15s ease",
-                    marginBottom: "12px",
+                    fontSize: "14px",
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor = "#3B8BFF";
-                    e.currentTarget.style.transform = "translateY(-1px)";
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "rgba(255,255,255,0.4)";
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.12)";
                   }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = "#4A9EFF";
-                    e.currentTarget.style.transform = "translateY(0)";
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "rgba(255,255,255,0.15)";
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.08)";
                   }}
-                >
-                  Entrar na plataforma
-                </button>
-
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <a
-                    href="#"
-                    style={{
-                      color: "#4A9EFF",
-                      textDecoration: "none",
-                      fontSize: "13px",
-                    }}
-                    onMouseOver={(e) => (e.target.style.color = "#3B8BFF")}
-                    onMouseOut={(e) => (e.target.style.color = "#4A9EFF")}
-                  >
-                    Esqueci minha senha
-                  </a>
-                  <a
-                    href="#"
-                    style={{
-                      color: "#94A3B8",
-                      textDecoration: "none",
-                      fontSize: "13px",
-                    }}
-                    onMouseOver={(e) => (e.target.style.color = "#ffffff")}
-                    onMouseOut={(e) => (e.target.style.color = "#94A3B8")}
-                  >
-                    Precisa de ajuda?
-                  </a>
-                </div>
-              </form>
-            </div>
-
-            {/* Promoção/branding (opcional) - fica abaixo do formulário */}
-            <div
-              style={{
-                width: "100%",
-                marginTop: "24px",
-                backgroundColor: "transparent",
-                display: "flex",
-                gap: "20px",
-                alignItems: "center",
-              }}
-            >
-              <div>
-                <h1 style={{ fontSize: "2.5rem", margin: 0, color: "#fff", lineHeight: 1 }}>GESTÃO</h1>
-                <h1 style={{ fontSize: "2.5rem", margin: 0, color: "#fff", lineHeight: 1 }}>DE</h1>
-                <h1 style={{ fontSize: "2.5rem", margin: 0, color: "#fff", lineHeight: 1 }}>ALUNOS.</h1>
-                <p style={{ color: "#fff", marginTop: 8 }}>Carteirinha Digital</p>
+                />
               </div>
-            </div>
+
+              <div style={{ marginBottom: "14px" }}>
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{
+                    width: "100%",
+                    height: "44px",
+                    padding: "0 12px",
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    borderRadius: "10px",
+                    color: "#ffffff",
+                    outline: "none",
+                    boxSizing: "border-box",
+                    fontSize: "14px",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "rgba(255,255,255,0.4)";
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.12)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "rgba(255,255,255,0.15)";
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.08)";
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                style={{
+                  width: "100%",
+                  height: "44px",
+                  borderRadius: "10px",
+                  border: "none",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  backgroundColor: "#003DBA", // tom mais escuro para botão dentro do cartão azul
+                  color: "#ffffff",
+                  boxSizing: "border-box",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0031a0";
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "#003DBA";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                Entrar
+              </button>
+
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12, fontSize: 13 }}>
+                <a
+                  href="#"
+                  style={{ color: "rgba(255,255,255,0.85)", textDecoration: "none" }}
+                  onMouseOver={(e) => (e.target.style.color = "#ffffff")}
+                  onMouseOut={(e) => (e.target.style.color = "rgba(255,255,255,0.85)")}
+                >
+                  Esqueci minha senha
+                </a>
+                <a
+                  href="#"
+                  style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
+                  onMouseOver={(e) => (e.target.style.color = "#ffffff")}
+                  onMouseOut={(e) => (e.target.style.color = "rgba(255,255,255,0.7)")}
+                >
+                  Ajuda
+                </a>
+              </div>
+            </form>
           </div>
         </div>
       </div>
 
-      {/* Seção de Apps - agora visível abaixo do login */}
+      {/* Seções de apps e ícones abaixo (mantive como estavam) */}
       <div
         style={{
           display: "flex",
@@ -237,7 +202,6 @@ export default function Login() {
           boxSizing: "border-box",
         }}
       >
-        {/* App Mobile EDUON */}
         <div
           style={{
             flex: 1,
@@ -294,24 +258,8 @@ export default function Login() {
             </button>
           </div>
         </div>
-
-        {/* App Web EDUON */}
-        <div
-          style={{
-            flex: 1,
-            backgroundColor: "#0A1128",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "30px",
-            boxSizing: "border-box",
-          }}
-        >
-        </div>
       </div>
 
-      {/* Nova Seção com Ícones de Aplicativos */}
       <div
         style={{
           display: "flex",
@@ -332,8 +280,7 @@ export default function Login() {
             margin: "0 auto",
           }}
         >
-          {/* (Ícones...) */}
-          {/* ... reutilizei exatamente os blocos de ícone que você já tinha */}
+          {/* Ícones - mantidos */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
             <div style={{
               width: "80px",
@@ -428,7 +375,7 @@ export default function Login() {
 
       {/* Botão Voltar ao Topo */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={scrollToTop}
         style={{
           position: "fixed",
           bottom: "20px",
