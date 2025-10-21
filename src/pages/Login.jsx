@@ -40,16 +40,19 @@ export default function Login() {
         overflowY: "auto",
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        backgroundColor: "#0A1128", // mantém o fundo geral escuro por trás das seções
+        backgroundColor: "#0A1128",
       }}
     >
-      {/* Área do topo: agora com fundo branco onde o formulário fica destacado */}
+      {/* =========  PRIMEIRA SEÇÃO (reduzida)  ========= */}
       <div
         style={{
           width: "100%",
           boxSizing: "border-box",
-          backgroundColor: "#ffffff", // fundo branco da área de login (invertido)
-          padding: "40px 20px",
+          backgroundColor: "#ffffff", // área branca
+          height: "180px", // altura reduzida conforme pedido
+          display: "flex",
+          alignItems: "center",
+          padding: "0 20px",
         }}
       >
         <div
@@ -57,120 +60,151 @@ export default function Login() {
             width: "100%",
             maxWidth: "1200px",
             margin: "0 auto",
-            boxSizing: "border-box",
             display: "flex",
-            justifyContent: "flex-end", // posiciona o conteúdo à direita
-            alignItems: "flex-start",
+            alignItems: "center",
+            justifyContent: "space-between",
+            boxSizing: "border-box",
           }}
         >
-          {/* Cartão de login em azul, menor (escala reduzida) e alinhado ao canto direito */}
+          {/* Lado esquerdo: texto EDUON em preto */}
           <div
             style={{
-              width: "360px", // escala menor
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <h1
+              style={{
+                margin: 0,
+                color: "#000000",
+                fontSize: "2.25rem",
+                fontWeight: 800,
+                letterSpacing: "1px",
+              }}
+            >
+              EDUON
+            </h1>
+          </div>
+
+          {/* Lado direito: cartão de login (menor) */}
+          <div
+            style={{
+              width: "420px",
               transform: "scale(0.95)",
               transformOrigin: "top right",
-              backgroundColor: "#0A66FF", // formulário em azul
+              backgroundColor: "#0A1128",
               color: "#ffffff",
               borderRadius: "14px",
-              padding: "24px",
+              padding: "16px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "1.25rem", fontWeight: 700 }}>Entrar na EDUON</h2>
-            <p style={{ marginTop: 8, marginBottom: 18, fontSize: "0.95rem", color: "rgba(255,255,255,0.85)" }}>
+            <h2 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700 }}>Entrar na EDUON</h2>
+            <p style={{ marginTop: 6, marginBottom: 10, fontSize: "0.85rem", color: "rgba(255,255,255,0.85)" }}>
               Gestão de alunos e carteirinha digital
             </p>
 
+            {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
             <form onSubmit={handleLogin}>
-              <div style={{ marginBottom: "12px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "8px",
+                  alignItems: "center",
+                }}
+              >
+                {/* Email (expande) */}
                 <input
                   type="text"
-                  placeholder="Usuário ou email"
+                  placeholder="Email"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   style={{
-                    width: "100%",
-                    height: "44px",
-                    padding: "0 12px",
+                    flex: 1,
+                    height: "40px",
+                    padding: "0 10px",
                     backgroundColor: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    borderRadius: "10px",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    borderRadius: "8px",
                     color: "#ffffff",
                     outline: "none",
-                    boxSizing: "border-box",
                     fontSize: "14px",
+                    boxSizing: "border-box",
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "rgba(255,255,255,0.4)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.35)";
                     e.target.style.backgroundColor = "rgba(255,255,255,0.12)";
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = "rgba(255,255,255,0.15)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.12)";
                     e.target.style.backgroundColor = "rgba(255,255,255,0.08)";
                   }}
                 />
-              </div>
 
-              <div style={{ marginBottom: "14px" }}>
+                {/* Senha (tamanho fixo) */}
                 <input
                   type="password"
                   placeholder="Senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   style={{
-                    width: "100%",
-                    height: "44px",
-                    padding: "0 12px",
+                    width: "150px",
+                    height: "40px",
+                    padding: "0 10px",
                     backgroundColor: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    borderRadius: "10px",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    borderRadius: "8px",
                     color: "#ffffff",
                     outline: "none",
-                    boxSizing: "border-box",
                     fontSize: "14px",
+                    boxSizing: "border-box",
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "rgba(255,255,255,0.4)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.35)";
                     e.target.style.backgroundColor = "rgba(255,255,255,0.12)";
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = "rgba(255,255,255,0.15)";
+                    e.target.style.borderColor = "rgba(255,255,255,0.12)";
                     e.target.style.backgroundColor = "rgba(255,255,255,0.08)";
                   }}
                 />
+
+                {/* Botão Entrar (ao lado) */}
+                <button
+                  type="submit"
+                  style={{
+                    width: "110px",
+                    height: "40px",
+                    borderRadius: "8px",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    backgroundColor: "#003DBA",
+                    color: "#ffffff",
+                    boxSizing: "border-box",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = "#0031a0";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = "#003DBA";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  Entrar
+                </button>
               </div>
 
-              <button
-                type="submit"
-                style={{
-                  width: "100%",
-                  height: "44px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  backgroundColor: "#003DBA", // tom mais escuro para botão dentro do cartão azul
-                  color: "#ffffff",
-                  boxSizing: "border-box",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.backgroundColor = "#0031a0";
-                  e.currentTarget.style.transform = "translateY(-1px)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.backgroundColor = "#003DBA";
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                Entrar
-              </button>
-
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12, fontSize: 13 }}>
+              {/* Links menores abaixo (opcional) */}
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8, fontSize: 12 }}>
                 <a
                   href="#"
                   style={{ color: "rgba(255,255,255,0.85)", textDecoration: "none" }}
@@ -193,12 +227,12 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Seções de apps e ícones abaixo (mantive como estavam) */}
+      {/* =========  SEGUNDA SEÇÃO (altura aumentada)  ========= */}
       <div
         style={{
           display: "flex",
           width: "100%",
-          minHeight: "200px",
+          minHeight: "420px", // aumentei a altura da segunda seção
           boxSizing: "border-box",
         }}
       >
@@ -210,31 +244,31 @@ export default function Login() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            padding: "30px",
+            padding: "40px",
             boxSizing: "border-box",
           }}
         >
-          <h3 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#ffffff", marginBottom: "8px" }}>
+          <h3 style={{ fontSize: "1.75rem", fontWeight: "bold", color: "#ffffff", marginBottom: "12px" }}>
             EDUON Mobile
           </h3>
-          <p style={{ fontSize: "1rem", color: "#ffffff", marginBottom: "20px", textAlign: "center" }}>
+          <p style={{ fontSize: "1.05rem", color: "#ffffff", marginBottom: "24px", textAlign: "center" }}>
             Baixe o app para gestão educacional
           </p>
 
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "12px" }}>
             <button
               style={{
                 backgroundColor: "#ffffff",
                 color: "#000000",
                 border: "none",
-                borderRadius: "8px",
-                padding: "8px 16px",
-                fontSize: "12px",
+                borderRadius: "10px",
+                padding: "10px 18px",
+                fontSize: "13px",
                 fontWeight: "600",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                gap: "5px",
+                gap: "8px",
               }}
             >
               📱 App Store
@@ -244,14 +278,14 @@ export default function Login() {
                 backgroundColor: "#ffffff",
                 color: "#000000",
                 border: "none",
-                borderRadius: "8px",
-                padding: "8px 16px",
-                fontSize: "12px",
+                borderRadius: "10px",
+                padding: "10px 18px",
+                fontSize: "13px",
                 fontWeight: "600",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                gap: "5px",
+                gap: "8px",
               }}
             >
               🤖 Google Play
@@ -260,6 +294,7 @@ export default function Login() {
         </div>
       </div>
 
+      {/* =========  TERCEIRA SEÇÃO - ícones (mantive igual)  ========= */}
       <div
         style={{
           display: "flex",
@@ -282,92 +317,114 @@ export default function Login() {
         >
           {/* Ícones - mantidos */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#4A9EFF",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "15px",
-              boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
-            }}>
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
               <span style={{ fontSize: "32px" }}>👥</span>
             </div>
-            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>Gestão de Alunos</h4>
-            <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>Controle completo dos estudantes</p>
+            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>
+              Gestão de Alunos
+            </h4>
+            <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>
+              Controle completo dos estudantes
+            </p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#4A9EFF",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "15px",
-              boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
-            }}>
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
               <span style={{ fontSize: "32px" }}>📊</span>
             </div>
-            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>Relatórios</h4>
+            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>
+              Relatórios
+            </h4>
             <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>Análises e dados em tempo real</p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#4A9EFF",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "15px",
-              boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
-            }}>
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
               <span style={{ fontSize: "32px" }}>🎫</span>
             </div>
-            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>Carteirinha Digital</h4>
+            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>
+              Carteirinha Digital
+            </h4>
             <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>Identificação digital dos alunos</p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#4A9EFF",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "15px",
-              boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
-            }}>
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
               <span style={{ fontSize: "32px" }}>💬</span>
             </div>
-            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>Comunicação</h4>
+            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>
+              Comunicação
+            </h4>
             <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>Conecte escola e família</p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-            <div style={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#4A9EFF",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "15px",
-              boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
-            }}>
+            <div
+              style={{
+                width: "80px",
+                height: "80px",
+                backgroundColor: "#4A9EFF",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "15px",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
+              }}
+            >
               <span style={{ fontSize: "32px" }}>📈</span>
             </div>
-            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>Acompanhamento</h4>
+            <h4 style={{ fontSize: "16px", fontWeight: "600", color: "#ffffff", margin: "0 0 5px 0" }}>
+              Acompanhamento
+            </h4>
             <p style={{ fontSize: "12px", color: "#94A3B8", margin: "0", maxWidth: "120px" }}>Progresso pedagógico dos alunos</p>
           </div>
         </div>
