@@ -102,18 +102,17 @@ export default function Login() {
           <div
             style={{
               width: "480px",
-              height: "190px",
               transform: "scale(0.95)",
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
               color: "#ffffff",
-              borderRadius: "14px",
-              padding: "16px",
+              borderRadius: "12px",
+              padding: "10px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ marginBottom: 10, fontSize: "1.05rem", fontWeight: 700 }}>Login</h2>
+            <h2 style={{ marginBottom: 10, fontSize: "1rem", fontWeight: 700 }}>Login</h2>
             
 
             {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
@@ -282,7 +281,7 @@ export default function Login() {
                 gap: "8px",
               }}
             >
-              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "30px", height: "30px" }} /></image>
+              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "20px", height: "20px" }} /></image>
               <p><br>Disponível em</br></p> 
               <p>Play Store.</p>
 
