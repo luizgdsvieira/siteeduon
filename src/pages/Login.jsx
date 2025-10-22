@@ -102,6 +102,7 @@ export default function Login() {
           <div
             style={{
               width: "480px",
+              height: "190px",
               transform: "scale(0.95)",
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
@@ -281,9 +282,9 @@ export default function Login() {
                 gap: "8px",
               }}
             >
-              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "5px", height: "5px" }} /></image>
-              <p>Disponível em</p> 
-              <p>Play Store</p>
+              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "30px", height: "30px" }} /></image>
+              <p><br>Disponível em</br></p> 
+              <p>Play Store.</p>
 
             </button>
           </div>
