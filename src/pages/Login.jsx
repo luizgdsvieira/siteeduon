@@ -108,7 +108,7 @@ export default function Login() {
               backgroundColor: "#0A1128",
               color: "#ffffff",
               borderRadius: "12px",
-              padding: "10px",
+              paddingTop: "10px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
@@ -282,7 +282,7 @@ export default function Login() {
                 gap: "8px",
               }}
             >
-              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "20px", height: "20px" }} /></image>
+              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "25px", height: "25px" }} /></image>
               <p>Disponível em Play Store.</p>
 
             </button>
