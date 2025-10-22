@@ -102,7 +102,7 @@ export default function Login() {
           <div
             style={{
               width: "480px",
-              height: "190px",
+              height: "125px",
               transform: "scale(0.92)",
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
