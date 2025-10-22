@@ -108,8 +108,8 @@ export default function Login() {
               backgroundColor: "#0A1128",
               color: "#ffffff",
               borderRadius: "12px",
-              paddingTop: "30px",
-              padding: "10px",
+              padding: "20px 10px 10px 10px", // mais espaço no topo
+              marginTop: "40px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
