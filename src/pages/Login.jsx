@@ -282,7 +282,7 @@ export default function Login() {
               }}
             >
               <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "20px", height: "20px" }} /></image>
-              <p><br>Disponível em</br>Play Store.</p> 
+              <p>Disponível em Play Store.</p>
 
             </button>
           </div>
