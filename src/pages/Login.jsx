@@ -11,11 +11,16 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      console.log("🔐 Tentando login com:", { username, password });
       const res = await api.post("auth/login", { username, password });
+      console.log("✅ Login bem-sucedido:", res.data);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
       navigate("/dashboard");
     } catch (err) {
-      alert("Login inválido");
+      console.error("❌ Erro no login:", err);
+      console.error("❌ Resposta do servidor:", err.response?.data);
+      alert(`Login inválido: ${err.response?.data?.error || err.message}`);
     }
   };
 
