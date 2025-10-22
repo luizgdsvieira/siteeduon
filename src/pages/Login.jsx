@@ -12,6 +12,9 @@ export default function Login() {
     e.preventDefault();
     try {
       console.log("🔐 Tentando login com:", { username, password });
+      console.log("🌍 Ambiente:", import.meta.env.DEV ? "Desenvolvimento" : "Produção");
+      console.log("📡 URL da API:", api.defaults.baseURL);
+      
       const res = await api.post("auth/login", { username, password });
       console.log("✅ Login bem-sucedido:", res.data);
       localStorage.setItem("token", res.data.token);
@@ -20,6 +23,8 @@ export default function Login() {
     } catch (err) {
       console.error("❌ Erro no login:", err);
       console.error("❌ Resposta do servidor:", err.response?.data);
+      console.error("❌ Status:", err.response?.status);
+      console.error("❌ URL tentada:", err.config?.url);
       alert(`Login inválido: ${err.response?.data?.error || err.message}`);
     }
   };
