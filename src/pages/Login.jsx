@@ -27,7 +27,7 @@ export default function Login() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const HEADER_HEIGHT = 150; // mantenha consistente com styles abaixo
+  const HEADER_HEIGHT = 130; // mantenha consistente com styles abaixo
 
   return (
     <div
@@ -281,7 +281,10 @@ export default function Login() {
                 gap: "8px",
               }}
             >
-              Google Play
+              <image><img src="/images/logoplay.png" alt="Play Store" style={{ width: "5px", height: "5px" }} /></image>
+              <p>Disponível em</p> 
+              <p>Play Store</p>
+
             </button>
           </div>
         </div>
