@@ -1,0 +1,251 @@
+/* Dashboard Custom CSS - Fallback para quando Tailwind não funcionar */
+
+.dashboardContainer {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #dbeafe 0%, #ffffff 50%, #dbeafe 100%);
+}
+
+/* Coluna Esquerda - Sidebar */
+.sidebar {
+  width: 320px;
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Header do Sidebar */
+.sidebarHeader {
+  padding: 24px;
+  border-bottom: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.sidebarLogo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  background: linear-gradient(to right, white, #e0f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebarSubtitle {
+  color: #bfdbfe;
+  font-size: 14px;
+}
+
+/* Card de Informações do Usuário */
+.userInfoSection {
+  padding: 24px;
+  border-bottom: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.userInfoCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.userInfoHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.userAvatar {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.userInfoText {
+  margin-left: 16px;
+}
+
+.userInfoTitle {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.userInfoRole {
+  color: #bfdbfe;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.userInfoDetails {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.userInfoRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.userInfoLabel {
+  color: #bfdbfe;
+}
+
+.userInfoValue {
+  font-weight: 600;
+}
+
+.statusOnline {
+  color: #86efac;
+  font-weight: 600;
+}
+
+/* Navegação */
+.navSection {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navButton {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+
+.navButtonActive {
+  background: white;
+  color: #1e40af;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.navButtonInactive {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navButtonInactive:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navButtonContent {
+  display: flex;
+  align-items: center;
+}
+
+.navButtonIcon {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.navButtonText {
+  display: flex;
+  flex-direction: column;
+}
+
+.navButtonTitle {
+  font-weight: 600;
+}
+
+.navButtonSubtitle {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+/* Botão de Sair */
+.logoutSection {
+  padding: 16px;
+  border-top: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.logoutButton {
+  width: 100%;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logoutButton:hover {
+  background: rgba(239, 68, 68, 0.3);
+  transform: scale(1.05);
+}
+
+/* Área Principal */
+.mainArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header do Conteúdo */
+.contentHeader {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 24px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contentTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 4px;
+}
+
+.contentSubtitle {
+  color: #2563eb;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Conteúdo */
+.contentArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.contentWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+  
+  .dashboardContainer {
+    flex-direction: column;
+  }
+}
