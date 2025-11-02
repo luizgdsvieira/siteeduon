@@ -6,8 +6,13 @@ export default function Funcionarios() {
   const [form, setForm] = useState({ nome: "", cargo: "", nascimento: "" });
 
   const fetchFuncionarios = async () => {
-    const res = await api.get("/funcionarios");
-    setFuncionarios(res.data);
+    try {
+      const res = await api.get("/funcionarios");
+      setFuncionarios(res.data || []);
+    } catch (err) {
+      console.error("Erro ao buscar funcionários:", err);
+      setFuncionarios([]);
+    }
   };
 
   useEffect(() => {
@@ -17,12 +22,20 @@ export default function Funcionarios() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/funcionarios", form);
+      // Converter nome para name (formato esperado pelo backend)
+      const funcionarioData = {
+        ...form,
+        name: form.nome, // Adiciona 'name' com o valor de 'nome'
+      };
+      delete funcionarioData.nome; // Remove 'nome' para evitar confusão
+      
+      await api.post("/funcionarios", funcionarioData);
       alert("Funcionário cadastrado com sucesso!");
       setForm({ nome: "", cargo: "", nascimento: "" });
       fetchFuncionarios();
     } catch (err) {
-      alert("Erro ao cadastrar funcionário");
+      console.error("Erro ao cadastrar funcionário:", err);
+      alert("Erro ao cadastrar funcionário: " + (err.response?.data?.error || err.message));
     }
   };
 
@@ -62,9 +75,13 @@ export default function Funcionarios() {
 
       <h2 className="text-lg font-bold mb-2">Funcionários Cadastrados</h2>
       <ul>
-        {funcionarios.map((f) => (
-          <li key={f.id}>{f.nome} — Cargo: {f.cargo}</li>
-        ))}
+        {funcionarios.length === 0 ? (
+          <li className="text-gray-500">Nenhum funcionário cadastrado ainda.</li>
+        ) : (
+          funcionarios.map((f) => (
+            <li key={f.id}>{f.name || f.nome} — Cargo: {f.cargo || 'N/A'}</li>
+          ))
+        )}
       </ul>
     </div>
   );

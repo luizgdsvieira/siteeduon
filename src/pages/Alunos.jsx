@@ -14,8 +14,13 @@ export default function Alunos() {
 
   // Buscar alunos cadastrados
   const fetchAlunos = async () => {
-    const res = await api.get("/alunos");
-    setAlunos(res.data);
+    try {
+      const res = await api.get("/alunos");
+      setAlunos(res.data || []);
+    } catch (err) {
+      console.error("Erro ao buscar alunos:", err);
+      setAlunos([]);
+    }
   };
 
   useEffect(() => {
@@ -26,12 +31,20 @@ export default function Alunos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/alunos", form);
+      // Converter nome para name (formato esperado pelo backend)
+      const alunoData = {
+        ...form,
+        name: form.nome, // Adiciona 'name' com o valor de 'nome'
+      };
+      delete alunoData.nome; // Remove 'nome' para evitar confusão
+      
+      await api.post("/alunos", alunoData);
       alert("Aluno cadastrado com sucesso!");
       setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
       fetchAlunos();
     } catch (err) {
-      alert("Erro ao cadastrar aluno");
+      console.error("Erro ao cadastrar aluno:", err);
+      alert("Erro ao cadastrar aluno: " + (err.response?.data?.error || err.message));
     }
   };
 
@@ -93,9 +106,13 @@ export default function Alunos() {
 
       <h2 className="text-lg font-bold mb-2">Alunos Cadastrados</h2>
       <ul>
-        {alunos.map((a) => (
-          <li key={a.id}>{a.nome} — Matrícula: {a.matricula}</li>
-        ))}
+        {alunos.length === 0 ? (
+          <li className="text-gray-500">Nenhum aluno cadastrado ainda.</li>
+        ) : (
+          alunos.map((a) => (
+            <li key={a.id}>{a.name || a.nome} — Matrícula: {a.matricula || 'N/A'}</li>
+          ))
+        )}
       </ul>
     </div>
   );
