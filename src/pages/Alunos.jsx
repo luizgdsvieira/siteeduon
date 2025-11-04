@@ -41,11 +41,16 @@ export default function Alunos() {
       console.log('📤 Enviando dados:', alunoData);
       
       const response = await api.post("/alunos", alunoData);
-      console.log('✅ Resposta do servidor:', response.data);
+      console.log('✅ Resposta do servidor:', response);
+      console.log('✅ Status:', response.status);
+      console.log('✅ Dados:', response.data);
       
-      alert("Aluno cadastrado com sucesso!");
-      setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
-      fetchAlunos();
+      // Verificar se a resposta foi bem-sucedida
+      if (response.status === 201 || response.status === 200) {
+        alert("Aluno cadastrado com sucesso!");
+        setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
+        fetchAlunos();
+      }
     } catch (err) {
       console.error("❌ Erro ao cadastrar aluno:", err);
       console.error("📋 Detalhes do erro:", err.response?.data);

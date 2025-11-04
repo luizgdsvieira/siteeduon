@@ -29,10 +29,17 @@ export default function Funcionarios() {
       };
       delete funcionarioData.nome; // Remove 'nome' para evitar confusão
       
-      await api.post("/funcionarios", funcionarioData);
-      alert("Funcionário cadastrado com sucesso!");
-      setForm({ nome: "", cargo: "", nascimento: "" });
-      fetchFuncionarios();
+      const response = await api.post("/funcionarios", funcionarioData);
+      console.log('✅ Resposta do servidor:', response);
+      console.log('✅ Status:', response.status);
+      console.log('✅ Dados:', response.data);
+      
+      // Verificar se a resposta foi bem-sucedida
+      if (response.status === 201 || response.status === 200) {
+        alert("Funcionário cadastrado com sucesso!");
+        setForm({ nome: "", cargo: "", nascimento: "" });
+        fetchFuncionarios();
+      }
     } catch (err) {
       console.error("Erro ao cadastrar funcionário:", err);
       alert("Erro ao cadastrar funcionário: " + (err.response?.data?.error || err.message));

@@ -35,4 +35,27 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Interceptor de resposta para tratar apenas erros reais
+api.interceptors.response.use(
+  (response) => {
+    // Respostas bem-sucedidas (status 2xx)
+    return response;
+  },
+  (error) => {
+    // Apenas tratar como erro se for realmente um erro HTTP
+    if (error.response) {
+      // Erro com resposta do servidor (status 4xx, 5xx)
+      return Promise.reject(error);
+    } else if (error.request) {
+      // Erro de rede (sem resposta)
+      console.error('Erro de rede:', error.request);
+      return Promise.reject(error);
+    } else {
+      // Erro na configuração da requisição
+      console.error('Erro na configuração:', error.message);
+      return Promise.reject(error);
+    }
+  }
+);
+
 export default api;
