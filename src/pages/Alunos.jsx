@@ -38,13 +38,37 @@ export default function Alunos() {
       };
       delete alunoData.nome; // Remove 'nome' para evitar confusão
       
-      await api.post("/alunos", alunoData);
+      console.log('📤 Enviando dados:', alunoData);
+      
+      const response = await api.post("/alunos", alunoData);
+      console.log('✅ Resposta do servidor:', response.data);
+      
       alert("Aluno cadastrado com sucesso!");
       setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
       fetchAlunos();
     } catch (err) {
-      console.error("Erro ao cadastrar aluno:", err);
-      alert("Erro ao cadastrar aluno: " + (err.response?.data?.error || err.message));
+      console.error("❌ Erro ao cadastrar aluno:", err);
+      console.error("📋 Detalhes do erro:", err.response?.data);
+      
+      // Mensagem de erro mais detalhada
+      let errorMessage = "Erro ao cadastrar aluno";
+      
+      if (err.response?.data) {
+        const errorData = err.response.data;
+        errorMessage = errorData.details || errorData.error || errorMessage;
+        
+        if (errorData.hint) {
+          errorMessage += `\n\nDica: ${errorData.hint}`;
+        }
+        
+        if (errorData.code) {
+          errorMessage += `\nCódigo: ${errorData.code}`;
+        }
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      alert(errorMessage);
     }
   };
 
