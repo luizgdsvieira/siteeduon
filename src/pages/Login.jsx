@@ -83,7 +83,7 @@ export default function Login() {
             boxSizing: "border-box",
           }}
         >
-          {/* Lado esquerdo: texto EDUON em preto */}
+          {/* Lado esquerdo: logotipo (favicon) */}
           <div
             style={{
               flex: 1,
@@ -92,17 +92,16 @@ export default function Login() {
               height: "100%",
             }}
           >
-            <h1
+            <img
+              src="/favicon.svg"
+              alt="Eduon"
               style={{
+                height: "48px",
+                width: "auto",
                 margin: 5,
-                color: "rgba(10, 17, 40)",
-                fontSize: "2.25rem",
-                fontWeight: 800,
-                letterSpacing: "1px",
+                display: "block",
               }}
-            >
-              EDUON
-            </h1>
+            />
             <p style={{ marginTop: 19, marginBottom: 6, fontSize: "1rem", color: "rgba(10, 17, 40, 0.85)" }}>
               Gestão de alunos e carteirinha digital
             </p>
