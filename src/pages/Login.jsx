@@ -64,7 +64,8 @@ export default function Login() {
           right: 0,
           height: `${HEADER_HEIGHT}px`,
           boxSizing: "border-box",
-          backgroundColor: "#ffffff", // área branca
+          background:
+            "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)", // área branca
           display: "flex",
           alignItems: "center",
           padding: "0 20px",
@@ -239,10 +240,97 @@ export default function Login() {
         </div>
       </div>
 
-      {/* =========  SEGUNDA SEÇÃO (com margem-top para não ficar abaixo do header fixo)  ========= */}
+      {/* =========  NOVA SEÇÃO - Professor e chamada (abaixo da seção fixa)  ========= */}
       <div
         style={{
           marginTop: `${HEADER_HEIGHT}px`, // desloca conteúdo para baixo do header fixo
+          display: "flex",
+          width: "100%",
+          minHeight: "500px",
+          boxSizing: "border-box",
+          background: "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
+          padding: "60px 40px",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            maxWidth: "1200px",
+            alignItems: "center",
+            gap: "60px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {/* Imagem do professor */}
+          <div
+            style={{
+              flex: "0 0 400px",
+              maxWidth: "400px",
+              minWidth: "280px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src="/images/professor1.jpg"
+              alt="Professor"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "20px",
+                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.3)",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+
+          {/* Texto da chamada */}
+          <div
+            style={{
+              flex: "1 1 400px",
+              minWidth: "280px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              color: "#ffffff",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                fontWeight: "bold",
+                color: "#ffffff",
+                marginBottom: "20px",
+                lineHeight: "1.2",
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              Quer dar um novo passo na gestão da sua escola?
+            </h2>
+            <p
+              style={{
+                fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+                fontWeight: "600",
+                color: "#ffffff",
+                marginTop: "10px",
+                opacity: 0.95,
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              Conheça a Eduon.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* =========  SEGUNDA SEÇÃO (com margem-top para não ficar abaixo do header fixo)  ========= */}
+      <div
+        style={{
           display: "flex",
           width: "100%",
           minHeight: "580px", // aumentei ainda mais para destacar
