@@ -117,7 +117,7 @@ export default function Login() {
               color: "#ffffff",
               borderRadius: "12px",
               padding: "3px 10px 10px 10px", // mais espaço no topo
-              marginTop: "13px",
+              marginTop: "15px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
