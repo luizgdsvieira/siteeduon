@@ -103,9 +103,7 @@ export default function Login() {
             >
               EDUON
             </h1>
-            <p style={{ marginTop: 19, marginBottom: 6, fontSize: "1rem", color: "rgba(10, 17, 40, 0.85)" }}>
-              Gestão de alunos e carteirinha digital
-            </p>
+            
           </div>
 
           {/* Lado direito: cartão de login (menor) */}
@@ -303,7 +301,7 @@ export default function Login() {
               style={{
                 fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
                 fontWeight: "bold",
-                color: "#0A66FF",
+                color: "#011029",
                 marginBottom: "20px",
                 lineHeight: "1.2",
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
@@ -315,13 +313,13 @@ export default function Login() {
               style={{
                 fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
                 fontWeight: "600",
-                color: "#0A66FF",
+                color: "#011029",
                 marginTop: "10px",
                 opacity: 0.95,
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
               }}
             >
-              Conheça a Eduon.
+              Conheça a Eduon. Gestão de alunos e carteirinha digital.
             </p>
           </div>
         </div>
