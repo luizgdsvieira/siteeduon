@@ -64,8 +64,7 @@ export default function Login() {
           right: 0,
           height: `${HEADER_HEIGHT}px`,
           boxSizing: "border-box",
-          background:
-            "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)", // área branca
+          backgroundColor: "#ffffff",
           display: "flex",
           alignItems: "center",
           padding: "0 20px",
@@ -248,7 +247,7 @@ export default function Login() {
           width: "100%",
           minHeight: "500px",
           boxSizing: "border-box",
-          background: "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
+          backgroundColor: "#ffffff",
           padding: "60px 40px",
           alignItems: "center",
           justifyContent: "center",
@@ -268,9 +267,9 @@ export default function Login() {
           {/* Imagem do professor */}
           <div
             style={{
-              flex: "0 0 400px",
-              maxWidth: "400px",
-              minWidth: "280px",
+              flex: "0 0 900px",
+              maxWidth: "900px",
+              minWidth: "580px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -297,14 +296,14 @@ export default function Login() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              color: "#ffffff",
+              color: "#rgba(10, 17, 40)",
             }}
           >
             <h2
               style={{
                 fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
                 fontWeight: "bold",
-                color: "#ffffff",
+                color: "#rgba(10, 17, 40)",
                 marginBottom: "20px",
                 lineHeight: "1.2",
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
@@ -316,7 +315,7 @@ export default function Login() {
               style={{
                 fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
                 fontWeight: "600",
-                color: "#ffffff",
+                color: "#rgba(10, 17, 40)",
                 marginTop: "10px",
                 opacity: 0.95,
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
