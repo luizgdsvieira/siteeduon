@@ -267,12 +267,12 @@ export default function Login() {
           {/* Imagem do professor */}
           <div
             style={{
-              flex: "0 0 900px",
-              maxWidth: "900px",
-              minWidth: "580px",
+              flex: "0 0 600px",
+              maxWidth: "600px",
+              minWidth: "380px",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              alignItems: "left",
+              justifyContent: "left",
             }}
           >
             <img
