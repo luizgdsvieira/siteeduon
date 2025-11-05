@@ -110,13 +110,13 @@ export default function Login() {
           <div
             style={{
               width: "480px",
-              height: "125px",
+              height: "120px",
               transform: "scale(0.92)",
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
               color: "#ffffff",
-              // borderRadius: "12px",
-              padding: "3px 10px 10px 10px", // mais espaço no topo
+              borderRadius: "8px",
+              padding: "10px 10px 10px 10px", // mais espaço no topo
               marginTop: "10px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
@@ -243,7 +243,7 @@ export default function Login() {
           marginTop: `${HEADER_HEIGHT}px`, // desloca conteúdo para baixo do header fixo
           display: "flex",
           width: "100%",
-          minHeight: "500px",
+          minHeight: "580px",
           boxSizing: "border-box",
           background:
             "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
@@ -337,7 +337,7 @@ export default function Login() {
           boxSizing: "border-box",
           // degradê de fundo solicitado
           background:
-            "linear-gradient(135deg,rgb(232, 236, 236) 0%,rgb(240, 243, 243) 40%,rgb(255, 255, 255) 100%)",
+            "linear-gradient(135deg,rgb(135, 136, 136) 0%,rgb(240, 243, 243) 40%,rgb(255, 255, 255) 100%)",
         }}
       >
         <div
