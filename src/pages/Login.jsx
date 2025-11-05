@@ -336,8 +336,7 @@ export default function Login() {
           minHeight: "580px", // aumentei ainda mais para destacar
           boxSizing: "border-box",
           // degradê de fundo solicitado
-          background:
-            "linear-gradient(135deg,rgb(135, 136, 136) 0%,rgb(240, 243, 243) 40%,rgb(255, 255, 255) 100%)",
+          background:"#ffffff",
         }}
       >
         <div
@@ -378,6 +377,7 @@ export default function Login() {
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
+                boxShadow: "0 4px 12px rgba(74, 158, 255, 0.3)",
                 gap: "8px",
               }}
             >
