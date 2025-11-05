@@ -67,7 +67,7 @@ export default function Login() {
           backgroundColor: "#ffffff",
           display: "flex",
           alignItems: "center",
-          padding: "0 20px",
+          padding: "0 15px",
           zIndex: 1200,
           borderBottom: "1px solid rgba(10,17,40,0.06)",
         }}
@@ -246,7 +246,7 @@ export default function Login() {
           minHeight: "500px",
           boxSizing: "border-box",
           background:
-            "linear-gradient(135deg,rgb(31, 37, 53) 0%,rgb(55, 58, 63) 40%,rgb(130, 138, 146) 100%)",
+            "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
           padding: "60px 40px",
           alignItems: "center",
           justifyContent: "center",
@@ -302,7 +302,8 @@ export default function Login() {
               style={{
                 fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
                 fontWeight: "bold",
-                color: "#011029",
+                // color: "#011029",
+                color: "#ffffff",
                 marginBottom: "20px",
                 lineHeight: "1.2",
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
@@ -314,7 +315,8 @@ export default function Login() {
               style={{
                 fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
                 fontWeight: "600",
-                color: "#011029",
+                // color: "#011029",
+                color: "#ffffff",
                 marginTop: "10px",
                 opacity: 0.95,
                 textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
@@ -335,7 +337,7 @@ export default function Login() {
           boxSizing: "border-box",
           // degradê de fundo solicitado
           background:
-            "linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%)",
+            "linear-gradient(135deg,rgb(138, 139, 139) 0%,rgb(186, 187, 187) 40%,rgb(255, 255, 255) 100%)",
         }}
       >
         <div
@@ -347,7 +349,7 @@ export default function Login() {
             alignItems: "center",
             padding: "40px",
             boxSizing: "border-box",
-            color: "#ffffff",
+            color: "#011029",
           }}
         >
           <h3 style={{ fontSize: "1.75rem", fontWeight: "bold", color: "#ffffff", marginBottom: "12px" }}>
@@ -359,7 +361,7 @@ export default function Login() {
             <img src="/images/celular.png" alt="EDUON Mobile" style={{ width: "100%", borderRadius: 12 }} />
           </div>
 
-          <p style={{ fontSize: "1.05rem", color: "#ffffff", marginBottom: "24px", textAlign: "center" }}>
+          <p style={{ fontSize: "1.05rem", color: "#011029", marginBottom: "24px", textAlign: "center" }}>
             Baixe o app para gestão educacional
           </p>
 
