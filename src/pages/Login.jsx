@@ -37,7 +37,7 @@ export default function Login() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const HEADER_HEIGHT = 130; // mantenha consistente com styles abaixo
+  const HEADER_HEIGHT = 120; // mantenha consistente com styles abaixo
 
   return (
     <div
@@ -67,7 +67,7 @@ export default function Login() {
           backgroundColor: "#ffffff",
           display: "flex",
           alignItems: "center",
-          padding: "0 15px",
+          padding: "0 20px",
           zIndex: 1200,
           borderBottom: "1px solid rgba(10,17,40,0.06)",
         }}
@@ -337,7 +337,7 @@ export default function Login() {
           boxSizing: "border-box",
           // degradê de fundo solicitado
           background:
-            "linear-gradient(135deg,rgb(138, 139, 139) 0%,rgb(186, 187, 187) 40%,rgb(255, 255, 255) 100%)",
+            "linear-gradient(135deg,rgb(232, 236, 236) 0%,rgb(240, 243, 243) 40%,rgb(255, 255, 255) 100%)",
         }}
       >
         <div
@@ -349,10 +349,10 @@ export default function Login() {
             alignItems: "center",
             padding: "40px",
             boxSizing: "border-box",
-            color: "#011029",
+            color: "#ffffff",
           }}
         >
-          <h3 style={{ fontSize: "1.75rem", fontWeight: "bold", color: "#ffffff", marginBottom: "12px" }}>
+          <h3 style={{ fontSize: "1.75rem", fontWeight: "bold", color: "#011029", marginBottom: "12px" }}>
             EDUON Mobile
           </h3>
 
