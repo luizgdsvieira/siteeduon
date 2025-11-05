@@ -115,14 +115,14 @@ export default function Login() {
               transformOrigin: "top right",
               backgroundColor: "#0A1128",
               color: "#ffffff",
-              borderRadius: "12px",
+              // borderRadius: "12px",
               padding: "3px 10px 10px 10px", // mais espaço no topo
               marginTop: "10px",
               boxShadow: "0 8px 30px rgba(10, 17, 40, 0.25)",
               boxSizing: "border-box",
             }}
           >
-            <h2 style={{ marginBottom: 8, fontSize: "1rem", fontWeight: 700 }}>Login</h2>
+            <h2 style={{ marginBottom: 6, fontSize: "1rem", fontWeight: 700 }}>Login</h2>
             
 
             {/* FORM: agora os campos ficam em linha (email | senha | botão) */}
@@ -245,7 +245,8 @@ export default function Login() {
           width: "100%",
           minHeight: "500px",
           boxSizing: "border-box",
-          backgroundColor: "#ffffff",
+          background:
+            "linear-gradient(135deg,rgb(31, 37, 53) 0%,rgb(55, 58, 63) 40%,rgb(130, 138, 146) 100%)",
           padding: "60px 40px",
           alignItems: "center",
           justifyContent: "center",
