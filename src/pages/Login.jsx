@@ -15,7 +15,7 @@ export default function Login() {
       console.log("🌍 Ambiente:", import.meta.env.DEV ? "Desenvolvimento" : "Produção");
       console.log("📡 URL da API:", api.defaults.baseURL);
       
-      const res = await api.post("auth/login", { username, password });
+      const res = await api.post("/auth/login", { username, password });
       console.log("✅ Login bem-sucedido:", res.data);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
