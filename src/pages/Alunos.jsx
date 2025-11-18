@@ -11,7 +11,6 @@ export default function Alunos() {
     turno: "",
     nascimento: "",
   });
-  const [cadastroInfo, setCadastroInfo] = useState(null);
 
   // Buscar alunos cadastrados
   const fetchAlunos = async () => {
@@ -46,16 +45,8 @@ export default function Alunos() {
       console.log('✅ Status:', response.status);
       console.log('✅ Dados:', response.data);
       
-      // Verificar se a resposta foi bem-sucedida
       if (response.status === 201 || response.status === 200) {
-        // Armazenar informações do cadastro (credenciais e QR Code)
-        if (response.data.credenciais) {
-          setCadastroInfo({
-            aluno: response.data.aluno,
-            credenciais: response.data.credenciais,
-            qrImage: response.data.aluno?.qrImage
-          });
-        }
+        alert("Aluno cadastrado com sucesso!");
         setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
         fetchAlunos();
       }
@@ -140,44 +131,6 @@ export default function Alunos() {
           Cadastrar Aluno
         </button>
       </form>
-
-      {/* Modal com informações do cadastro */}
-      {cadastroInfo && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
-            <h2 className="text-xl font-bold mb-4 text-green-600">✅ Aluno cadastrado com sucesso!</h2>
-            
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Credenciais de Login:</h3>
-              <div className="bg-gray-100 p-3 rounded">
-                <p><strong>Usuário:</strong> {cadastroInfo.credenciais.username}</p>
-                <p><strong>Senha:</strong> {cadastroInfo.credenciais.password}</p>
-                <p className="text-sm text-gray-600 mt-2">⚠️ Anote essas credenciais para informar ao aluno</p>
-              </div>
-            </div>
-
-            {cadastroInfo.qrImage && (
-              <div className="mb-4">
-                <h3 className="font-semibold mb-2">QR Code Gerado:</h3>
-                <div className="flex justify-center">
-                  <img 
-                    src={cadastroInfo.qrImage} 
-                    alt="QR Code do Aluno" 
-                    className="border-2 border-gray-300 rounded"
-                  />
-                </div>
-              </div>
-            )}
-
-            <button
-              onClick={() => setCadastroInfo(null)}
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              Fechar
-            </button>
-          </div>
-        </div>
-      )}
 
       <h2 className="text-lg font-bold mb-2">Alunos Cadastrados</h2>
       <ul>
