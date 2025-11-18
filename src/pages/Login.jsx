@@ -24,8 +24,22 @@ export default function Login() {
       console.error("❌ Erro no login:", err);
       console.error("❌ Resposta do servidor:", err.response?.data);
       console.error("❌ Status:", err.response?.status);
-      console.error("❌ URL tentada:", err.config?.url);
-      alert(`Login inválido: ${err.response?.data?.error || err.message}`);
+      console.error("❌ URL completa tentada:", err.config?.baseURL + err.config?.url);
+      console.error("❌ Tipo de erro:", err.code || 'UNKNOWN');
+      
+      let errorMessage = "Erro ao fazer login";
+      
+      if (err.code === 'ECONNABORTED') {
+        errorMessage = "Tempo de conexão esgotado. Verifique sua internet.";
+      } else if (err.code === 'ERR_NETWORK' || !err.response) {
+        errorMessage = "Erro de conexão. Verifique se a API está online.";
+      } else if (err.response?.data?.error) {
+        errorMessage = err.response.data.error;
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      alert(`Login inválido: ${errorMessage}`);
     }
   };
 

@@ -23,6 +23,10 @@ const getBaseURL = () => {
 
 const api = axios.create({
   baseURL: getBaseURL(),
+  timeout: 30000, // 30 segundos de timeout
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 // Log para debug
@@ -42,19 +46,34 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    // Apenas tratar como erro se for realmente um erro HTTP
+    // Log detalhado do erro
     if (error.response) {
       // Erro com resposta do servidor (status 4xx, 5xx)
-      return Promise.reject(error);
+      console.error('❌ Erro HTTP:', {
+        status: error.response.status,
+        statusText: error.response.statusText,
+        data: error.response.data,
+        url: error.config?.url,
+        baseURL: error.config?.baseURL,
+        fullURL: error.config?.baseURL + error.config?.url
+      });
     } else if (error.request) {
       // Erro de rede (sem resposta)
-      console.error('Erro de rede:', error.request);
-      return Promise.reject(error);
+      console.error('❌ Erro de rede (sem resposta do servidor):', {
+        message: error.message,
+        code: error.code,
+        url: error.config?.url,
+        baseURL: error.config?.baseURL,
+        fullURL: error.config?.baseURL + error.config?.url
+      });
     } else {
       // Erro na configuração da requisição
-      console.error('Erro na configuração:', error.message);
-      return Promise.reject(error);
+      console.error('❌ Erro na configuração:', {
+        message: error.message,
+        stack: error.stack
+      });
     }
+    return Promise.reject(error);
   }
 );
 
