@@ -43,6 +43,11 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => {
     // Respostas bem-sucedidas (status 2xx)
+    console.log('✅ Resposta recebida:', {
+      status: response.status,
+      url: response.config?.url,
+      data: response.data
+    });
     return response;
   },
   (error) => {

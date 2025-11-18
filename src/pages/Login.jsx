@@ -11,28 +11,47 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      console.log("🔐 Tentando login com:", { username, password });
+      console.log("🔐 Tentando login com:", { username, password: password ? '***' : '' });
       console.log("🌍 Ambiente:", import.meta.env.DEV ? "Desenvolvimento" : "Produção");
       console.log("📡 URL da API:", api.defaults.baseURL);
       
       const res = await api.post("/auth/login", { username, password });
-      console.log("✅ Login bem-sucedido:", res.data);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
-      navigate("/dashboard");
+      
+      console.log("✅ Resposta completa:", res);
+      console.log("✅ Status:", res.status);
+      console.log("✅ Dados:", res.data);
+      
+      // Verificar se a resposta tem os dados necessários
+      if (res.data && res.data.token) {
+        console.log("✅ Login bem-sucedido! Salvando token...");
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.role);
+        console.log("✅ Redirecionando para dashboard...");
+        navigate("/dashboard");
+      } else {
+        console.warn("⚠️ Resposta sem token:", res.data);
+        alert("Erro: Resposta do servidor inválida. Tente novamente.");
+      }
     } catch (err) {
       console.error("❌ Erro no login:", err);
+      console.error("❌ Tipo de erro:", err.constructor?.name);
+      console.error("❌ Código do erro:", err.code);
+      console.error("❌ Mensagem:", err.message);
       console.error("❌ Resposta do servidor:", err.response?.data);
       console.error("❌ Status:", err.response?.status);
       console.error("❌ URL completa tentada:", err.config?.baseURL + err.config?.url);
-      console.error("❌ Tipo de erro:", err.code || 'UNKNOWN');
+      console.error("❌ Request completo:", err.request);
       
       let errorMessage = "Erro ao fazer login";
       
-      if (err.code === 'ECONNABORTED') {
+      // Verificar se é um erro de autenticação (401)
+      if (err.response?.status === 401) {
+        errorMessage = err.response.data?.error || "Usuário ou senha inválidos";
+      } else if (err.code === 'ECONNABORTED') {
         errorMessage = "Tempo de conexão esgotado. Verifique sua internet.";
       } else if (err.code === 'ERR_NETWORK' || !err.response) {
-        errorMessage = "Erro de conexão. Verifique se a API está online.";
+        // Se não há resposta, pode ser CORS ou API offline
+        errorMessage = "Erro de conexão. Verifique se a API está online e acessível.";
       } else if (err.response?.data?.error) {
         errorMessage = err.response.data.error;
       } else if (err.message) {
