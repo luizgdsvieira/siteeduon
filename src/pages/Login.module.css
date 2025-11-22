@@ -1,0 +1,497 @@
+/* Login.module.css - Estilos profissionais para a página de login */
+
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0A1128;
+}
+
+/* ========= HEADER FIXO ========= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1200;
+  border-bottom: 1px solid rgba(10, 17, 40, 0.08);
+  box-shadow: 0 2px 8px rgba(10, 17, 40, 0.05);
+}
+
+.headerContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logoText {
+  margin: 0;
+  color: rgba(10, 17, 40);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #0A1128 0%, #003DBA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========= CARTÃO DE LOGIN ========= */
+.loginCard {
+  width: 500px;
+  min-height: 140px;
+  background: linear-gradient(135deg, #0A1128 0%, #1a2540 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 12px 40px rgba(10, 17, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px rgba(10, 17, 40, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.loginTitle {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  height: 44px;
+  padding: 0 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+}
+
+.inputPassword {
+  width: 160px;
+  flex: 0 0 160px;
+}
+
+.submitButton {
+  width: 120px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #003DBA 0%, #0052e6 100%);
+  color: #ffffff;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 61, 186, 0.3);
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, #0031a0 0%, #0047cc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 61, 186, 0.4);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 61, 186, 0.3);
+}
+
+.forgotLink {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.forgotLink a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgotLink a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ========= SEÇÃO HERO ========= */
+.heroSection {
+  margin-top: 120px;
+  display: flex;
+  width: 100%;
+  min-height: 600px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%);
+  padding: 80px 40px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(74, 158, 255, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heroContent {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.heroImage {
+  flex: 0 0 600px;
+  max-width: 600px;
+  min-width: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.heroImage img:hover {
+  transform: scale(1.02);
+}
+
+.heroText {
+  flex: 1 1 400px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroTitle {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.heroSubtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========= SEÇÃO MOBILE ========= */
+.mobileSection {
+  display: flex;
+  width: 100%;
+  min-height: 600px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.mobileContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
+
+.mobileTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0A1128;
+  margin: 0 0 20px 0;
+}
+
+.mobileImage {
+  width: 320px;
+  max-width: 90%;
+  margin-bottom: 24px;
+}
+
+.mobileImage img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(74, 158, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.mobileImage img:hover {
+  transform: scale(1.05);
+}
+
+.mobileDescription {
+  font-size: 1.1rem;
+  color: #0A1128;
+  margin: 0 0 32px 0;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.mobileButton {
+  background-color: #ffffff;
+  color: #0A1128;
+  border: 2px solid #4A9EFF;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.25);
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobileButton:hover {
+  background-color: #4A9EFF;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 158, 255, 0.35);
+}
+
+.mobileButton:active {
+  transform: translateY(0);
+}
+
+/* ========= SEÇÃO FEATURES ========= */
+.featuresSection {
+  display: flex;
+  width: 100%;
+  min-height: 300px;
+  background-color: #0A1128;
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
+
+.featuresContent {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  max-width: 220px;
+}
+
+.featureIcon {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #4A9EFF 0%, #0A66FF 100%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(74, 158, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover .featureIcon {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(74, 158, 255, 0.5);
+}
+
+.featureIcon span {
+  font-size: 36px;
+}
+
+.featureTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.featureDescription {
+  font-size: 13px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ========= BOTÃO VOLTAR AO TOPO ========= */
+.scrollTopButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #64748B 0%, #475569 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1300;
+}
+
+.scrollTopButton:hover {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.scrollTopButton:active {
+  transform: translateY(-2px);
+}
+
+.scrollTopButton span {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ========= RESPONSIVIDADE ========= */
+@media (max-width: 768px) {
+  .header {
+    height: 100px;
+    padding: 0 16px;
+  }
+
+  .logoText {
+    font-size: 1.75rem;
+  }
+
+  .loginCard {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .inputPassword {
+    width: 100%;
+    flex: 1;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+
+  .heroSection {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .heroImage {
+    flex: 1;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .featuresContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .featureCard {
+    max-width: 100%;
+  }
+}
+
