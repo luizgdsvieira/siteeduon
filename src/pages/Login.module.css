@@ -61,11 +61,11 @@
 /* ========= CARTÃO DE LOGIN ========= */
 .loginCard {
   width: 500px;
-  min-height: 140px;
+  min-height: 60px;
   background: linear-gradient(135deg, #0A1128 0%, #1a2540 100%);
   color: #ffffff;
   border-radius: 12px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 12px 40px rgba(10, 17, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
   box-sizing: border-box;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
