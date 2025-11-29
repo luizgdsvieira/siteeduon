@@ -64,7 +64,6 @@
   min-height: auto;
   background: linear-gradient(135deg, #0A1128 0%, #1a2540 100%);
   color: #ffffff;
-  border-radius: 10px;
   padding: 10px 10px 10px 10px;
   box-shadow: 0 8px 30px rgba(10, 17, 40, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
   box-sizing: border-box;
@@ -101,7 +100,6 @@
   padding: 0 12px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1.5px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
   color: #ffffff;
   font-size: 13px;
   box-sizing: border-box;
@@ -127,7 +125,6 @@
 .submitButton {
   width: 100px;
   height: 38px;
-  border-radius: 8px;
   border: none;
   cursor: pointer;
   display: inline-flex;
@@ -221,7 +218,6 @@
 .heroImage img {
   width: 100%;
   height: auto;
-  border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -290,7 +286,6 @@
 
 .mobileImage img {
   width: 100%;
-  border-radius: 16px;
   box-shadow: 0 8px 24px rgba(74, 158, 255, 0.2);
   transition: transform 0.3s ease;
 }
@@ -311,7 +306,6 @@
   background-color: #ffffff;
   color: #0A1128;
   border: 2px solid #4A9EFF;
-  border-radius: 12px;
   padding: 12px 24px;
   font-size: 14px;
   font-weight: 600;
@@ -369,7 +363,6 @@
   width: 90px;
   height: 90px;
   background: linear-gradient(135deg, #4A9EFF 0%, #0A66FF 100%);
-  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,7 +403,6 @@
   height: 56px;
   background: linear-gradient(135deg, #64748B 0%, #475569 100%);
   border: none;
-  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;

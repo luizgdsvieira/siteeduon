@@ -16,7 +16,7 @@ export default function Escola() {
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">Dados da Escola</h1>
-      <div className="bg-white p-4 rounded-lg shadow space-y-2">
+      <div className="bg-white p-4 shadow space-y-2">
         <p><strong>Nome:</strong> {escola.name}</p>
         <p><strong>CNPJ:</strong> {escola.cnpj}</p>
         <p><strong>Criada em:</strong> {new Date(escola.created_at).toLocaleDateString()}</p>

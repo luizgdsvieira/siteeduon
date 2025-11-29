@@ -196,7 +196,7 @@ export default function Dashboard() {
       <Navbar />
       <div className="p-6">
         <h2 className="text-xl font-bold mb-4">Lista de Alunos</h2>
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className="bg-white p-4 shadow">
           {alunos.length === 0 ? (
             <p className="text-gray-600">Nenhum aluno cadastrado.</p>
           ) : (

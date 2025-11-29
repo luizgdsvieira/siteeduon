@@ -13,7 +13,7 @@ export default function Navbar() {
       <h1 className="text-lg font-bold">EDUON</h1>
       <button
         onClick={handleLogout}
-        className="bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600"
+        className="bg-red-500 px-3 py-1 hover:bg-red-600"
       >
         Sair
       </button>
