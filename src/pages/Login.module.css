@@ -98,11 +98,11 @@
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
-  width: 480px;
+  width: 400px;
   min-height: auto;
   background: linear-gradient(135deg, #0A1128 0%, #1a2540 100%);
   color: #ffffff;
-  padding: 16px;
+  padding: 24px;
   box-shadow: 0 8px 30px rgba(10, 17, 40, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
   box-sizing: border-box;
   transform: translateY(-20px) scale(0.95);
@@ -114,14 +114,10 @@
   overflow: hidden;
 }
 
-.loginWrapper:hover .loginCard,
-.loginCard:hover {
+.loginCardOpen {
   transform: translateY(0) scale(1);
   opacity: 1;
   pointer-events: all;
-}
-
-.loginCard:hover {
   box-shadow: 0 16px 50px rgba(10, 17, 40, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
@@ -135,26 +131,21 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.formRow {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  gap: 16px;
 }
 
 .input {
-  flex: 1;
-  height: 38px;
-  padding: 0 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1.5px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 14px;
   box-sizing: border-box;
   transition: all 0.3s ease;
   outline: none;
+  border-radius: 6px;
 }
 
 .input::placeholder {
@@ -167,26 +158,22 @@
   box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
 }
 
-.inputPassword {
-  width: 140px;
-  flex: 0 0 140px;
-}
-
 .submitButton {
-  width: 100px;
-  height: 38px;
+  width: 100%;
+  height: 44px;
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   background: linear-gradient(135deg, #003DBA 0%, #0052e6 100%);
   color: #ffffff;
   box-sizing: border-box;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 61, 186, 0.3);
+  border-radius: 6px;
 }
 
 .submitButton:hover {
@@ -509,28 +496,14 @@
     width: calc(100vw - 32px);
     max-width: 100%;
     min-height: auto;
-    padding: 16px;
+    padding: 20px;
     right: auto;
     left: 50%;
-    transform: translate(-50%, -100%) scale(0.95);
+    transform: translate(-50%, -20px) scale(0.95);
   }
 
-  .loginWrapper:hover .loginCard {
+  .loginCardOpen {
     transform: translate(-50%, 0) scale(1);
-  }
-
-  .formRow {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .inputPassword {
-    width: 100%;
-    flex: 1;
-  }
-
-  .submitButton {
-    width: 100%;
   }
 
   .heroSection {

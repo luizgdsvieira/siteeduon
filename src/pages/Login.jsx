@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
@@ -6,8 +6,10 @@ import styles from "./Login.module.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const navigate = useNavigate();
   const containerRef = useRef(null);
+  const loginWrapperRef = useRef(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -71,6 +73,27 @@ export default function Login() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Fechar cartão ao clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (loginWrapperRef.current && !loginWrapperRef.current.contains(event.target)) {
+        setIsLoginOpen(false);
+      }
+    };
+
+    if (isLoginOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isLoginOpen]);
+
+  const toggleLoginCard = () => {
+    setIsLoginOpen(!isLoginOpen);
+  };
+
   return (
     <div ref={containerRef} className={styles.container}>
       {/* ========= HEADER FIXO ========= */}
@@ -82,32 +105,33 @@ export default function Login() {
           </div>
 
           {/* Botão e Cartão de Login */}
-          <div className={styles.loginWrapper}>
-            <button className={styles.accessButton}>
+          <div ref={loginWrapperRef} className={styles.loginWrapper}>
+            <button 
+              onClick={toggleLoginCard}
+              className={styles.accessButton}
+            >
               Acesse sua conta
             </button>
-            <div className={styles.loginCard}>
+            <div className={`${styles.loginCard} ${isLoginOpen ? styles.loginCardOpen : ''}`}>
               <h2 className={styles.loginTitle}>Login</h2>
               <form onSubmit={handleLogin} className={styles.loginForm}>
-                <div className={styles.formRow}>
-                  <input
-                    type="text"
-                    placeholder="Email"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className={styles.input}
-                  />
-                  <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={`${styles.input} ${styles.inputPassword}`}
-                  />
-                  <button type="submit" className={styles.submitButton}>
-                    Entrar
-                  </button>
-                </div>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className={styles.input}
+                />
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={styles.input}
+                />
+                <button type="submit" className={styles.submitButton}>
+                  Entrar
+                </button>
                 <div className={styles.forgotLink}>
                   <a href="#">Esqueci minha senha</a>
                 </div>
