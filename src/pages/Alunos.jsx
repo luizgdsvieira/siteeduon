@@ -13,6 +13,8 @@ export default function Alunos() {
   });
   const [cadastroInfo, setCadastroInfo] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [alunoParaDeletar, setAlunoParaDeletar] = useState(null);
+  const [deletando, setDeletando] = useState(false);
 
   // Buscar alunos cadastrados
   const fetchAlunos = async () => {
@@ -88,6 +90,24 @@ export default function Alunos() {
       }
       
       alert(errorMessage);
+    }
+  };
+
+  // Função para deletar aluno
+  const handleDeleteAluno = async (alunoId) => {
+    setDeletando(true);
+    try {
+      const response = await api.delete(`/alunos/${alunoId}`);
+      console.log('✅ Aluno deletado com sucesso:', response.data);
+      alert("Aluno deletado com sucesso!");
+      setAlunoParaDeletar(null);
+      fetchAlunos(); // Atualizar lista
+    } catch (err) {
+      console.error("❌ Erro ao deletar aluno:", err);
+      const errorMessage = err.response?.data?.error || err.response?.data?.details || err.message;
+      alert("Erro ao deletar aluno: " + errorMessage);
+    } finally {
+      setDeletando(false);
     }
   };
 
@@ -231,6 +251,42 @@ export default function Alunos() {
         </div>
       )}
 
+      {/* Modal de Confirmação de Exclusão */}
+      {alunoParaDeletar && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 shadow-lg max-w-md w-full mx-4 rounded-lg">
+            <h2 className="text-xl font-bold mb-4 text-red-600">⚠️ Confirmar Exclusão</h2>
+            <p className="mb-4 text-gray-700">
+              Tem certeza que deseja excluir o aluno <strong>{alunoParaDeletar.name || alunoParaDeletar.nome}</strong>?
+            </p>
+            {alunoParaDeletar.matricula && (
+              <p className="mb-4 text-sm text-gray-600">
+                Matrícula: {alunoParaDeletar.matricula}
+              </p>
+            )}
+            <p className="mb-6 text-sm text-red-600 font-medium">
+              ⚠️ Esta ação não pode ser desfeita!
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setAlunoParaDeletar(null)}
+                disabled={deletando}
+                className="flex-1 px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors font-medium disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => handleDeleteAluno(alunoParaDeletar.id)}
+                disabled={deletando}
+                className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors font-medium disabled:opacity-50"
+              >
+                {deletando ? "Excluindo..." : "Sim, Excluir"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="bg-white p-4 shadow mb-6">
         <h2 className="text-lg font-bold mb-4">Alunos Cadastrados</h2>
         
@@ -281,17 +337,26 @@ export default function Alunos() {
                 className="p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
               >
                 <div className="flex items-center justify-between">
-                  <div>
-                    <span className="font-semibold text-gray-800">{a.name || a.nome}</span>
-                    <span className="text-gray-600 ml-2">— Matrícula: {a.matricula || 'N/A'}</span>
-                  </div>
-                  {(a.ano || a.turma || a.turno) && (
-                    <div className="text-sm text-gray-500">
-                      {a.ano && <span className="mr-2">Ano: {a.ano}</span>}
-                      {a.turma && <span className="mr-2">Turma: {a.turma}</span>}
-                      {a.turno && <span>Turno: {a.turno}</span>}
+                  <div className="flex-1">
+                    <div className="flex items-center">
+                      <span className="font-semibold text-gray-800">{a.name || a.nome}</span>
+                      <span className="text-gray-600 ml-2">— Matrícula: {a.matricula || 'N/A'}</span>
                     </div>
-                  )}
+                    {(a.ano || a.turma || a.turno) && (
+                      <div className="text-sm text-gray-500 mt-1">
+                        {a.ano && <span className="mr-2">Ano: {a.ano}</span>}
+                        {a.turma && <span className="mr-2">Turma: {a.turma}</span>}
+                        {a.turno && <span>Turno: {a.turno}</span>}
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => setAlunoParaDeletar(a)}
+                    className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm font-medium"
+                    title="Excluir aluno"
+                  >
+                    🗑️ Excluir
+                  </button>
                 </div>
               </li>
             ))

@@ -4,6 +4,8 @@ import api from "../api/axios";
 export default function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [form, setForm] = useState({ nome: "", cargo: "", nascimento: "" });
+  const [funcionarioParaDeletar, setFuncionarioParaDeletar] = useState(null);
+  const [deletando, setDeletando] = useState(false);
 
   const fetchFuncionarios = async () => {
     try {
@@ -46,6 +48,24 @@ export default function Funcionarios() {
     }
   };
 
+  // Função para deletar funcionário
+  const handleDeleteFuncionario = async (funcionarioId) => {
+    setDeletando(true);
+    try {
+      const response = await api.delete(`/funcionarios/${funcionarioId}`);
+      console.log('✅ Funcionário deletado com sucesso:', response.data);
+      alert("Funcionário deletado com sucesso!");
+      setFuncionarioParaDeletar(null);
+      fetchFuncionarios(); // Atualizar lista
+    } catch (err) {
+      console.error("❌ Erro ao deletar funcionário:", err);
+      const errorMessage = err.response?.data?.error || err.response?.data?.details || err.message;
+      alert("Erro ao deletar funcionário: " + errorMessage);
+    } finally {
+      setDeletando(false);
+    }
+  };
+
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">Cadastro de Funcionários</h1>
@@ -80,16 +100,78 @@ export default function Funcionarios() {
         </button>
       </form>
 
-      <h2 className="text-lg font-bold mb-2">Funcionários Cadastrados</h2>
-      <ul>
-        {funcionarios.length === 0 ? (
-          <li className="text-gray-500">Nenhum funcionário cadastrado ainda.</li>
-        ) : (
-          funcionarios.map((f) => (
-            <li key={f.id}>{f.name || f.nome} — Cargo: {f.cargo || 'N/A'}</li>
-          ))
-        )}
-      </ul>
+      {/* Modal de Confirmação de Exclusão */}
+      {funcionarioParaDeletar && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 shadow-lg max-w-md w-full mx-4 rounded-lg">
+            <h2 className="text-xl font-bold mb-4 text-red-600">⚠️ Confirmar Exclusão</h2>
+            <p className="mb-4 text-gray-700">
+              Tem certeza que deseja excluir o funcionário <strong>{funcionarioParaDeletar.name || funcionarioParaDeletar.nome}</strong>?
+            </p>
+            {funcionarioParaDeletar.cargo && (
+              <p className="mb-4 text-sm text-gray-600">
+                Cargo: {funcionarioParaDeletar.cargo}
+              </p>
+            )}
+            <p className="mb-6 text-sm text-red-600 font-medium">
+              ⚠️ Esta ação não pode ser desfeita!
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setFuncionarioParaDeletar(null)}
+                disabled={deletando}
+                className="flex-1 px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors font-medium disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => handleDeleteFuncionario(funcionarioParaDeletar.id)}
+                disabled={deletando}
+                className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors font-medium disabled:opacity-50"
+              >
+                {deletando ? "Excluindo..." : "Sim, Excluir"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="bg-white p-4 shadow mb-6">
+        <h2 className="text-lg font-bold mb-4">Funcionários Cadastrados</h2>
+        <ul className="space-y-2">
+          {funcionarios.length === 0 ? (
+            <li className="text-gray-500 p-4 text-center">Nenhum funcionário cadastrado ainda.</li>
+          ) : (
+            funcionarios.map((f) => (
+              <li 
+                key={f.id}
+                className="p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center">
+                      <span className="font-semibold text-gray-800">{f.name || f.nome}</span>
+                      <span className="text-gray-600 ml-2">— Cargo: {f.cargo || 'N/A'}</span>
+                    </div>
+                    {f.nascimento && (
+                      <div className="text-sm text-gray-500 mt-1">
+                        Nascimento: {new Date(f.nascimento).toLocaleDateString('pt-BR')}
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => setFuncionarioParaDeletar(f)}
+                    className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm font-medium"
+                    title="Excluir funcionário"
+                  >
+                    🗑️ Excluir
+                  </button>
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
     </div>
   );
 }
