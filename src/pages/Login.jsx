@@ -81,33 +81,38 @@ export default function Login() {
             <h1 className={styles.logoText}>EDUON</h1>
           </div>
 
-          {/* Cartão de Login */}
-          <div className={styles.loginCard}>
-            <h2 className={styles.loginTitle}>Login</h2>
-            <form onSubmit={handleLogin} className={styles.loginForm}>
-              <div className={styles.formRow}>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className={styles.input}
-                />
-                <input
-                  type="password"
-                  placeholder="Senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={`${styles.input} ${styles.inputPassword}`}
-                />
-                <button type="submit" className={styles.submitButton}>
-                  Entrar
-                </button>
-              </div>
-              <div className={styles.forgotLink}>
-                <a href="#">Esqueci minha senha</a>
-              </div>
-            </form>
+          {/* Botão e Cartão de Login */}
+          <div className={styles.loginWrapper}>
+            <button className={styles.accessButton}>
+              Acesse sua conta
+            </button>
+            <div className={styles.loginCard}>
+              <h2 className={styles.loginTitle}>Login</h2>
+              <form onSubmit={handleLogin} className={styles.loginForm}>
+                <div className={styles.formRow}>
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={styles.input}
+                  />
+                  <input
+                    type="password"
+                    placeholder="Senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={`${styles.input} ${styles.inputPassword}`}
+                  />
+                  <button type="submit" className={styles.submitButton}>
+                    Entrar
+                  </button>
+                </div>
+                <div className={styles.forgotLink}>
+                  <a href="#">Esqueci minha senha</a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
