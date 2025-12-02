@@ -12,6 +12,7 @@ export default function Alunos() {
     nascimento: "",
   });
   const [cadastroInfo, setCadastroInfo] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Buscar alunos cadastrados
   const fetchAlunos = async () => {
@@ -89,6 +90,24 @@ export default function Alunos() {
       alert(errorMessage);
     }
   };
+
+  // Filtrar alunos baseado no termo de pesquisa
+  const filteredAlunos = alunos.filter((aluno) => {
+    const searchLower = searchTerm.toLowerCase();
+    const nome = (aluno.name || aluno.nome || "").toLowerCase();
+    const matricula = (aluno.matricula || "").toLowerCase();
+    const ano = (aluno.ano || "").toLowerCase();
+    const turma = (aluno.turma || "").toLowerCase();
+    const turno = (aluno.turno || "").toLowerCase();
+    
+    return (
+      nome.includes(searchLower) ||
+      matricula.includes(searchLower) ||
+      ano.includes(searchLower) ||
+      turma.includes(searchLower) ||
+      turno.includes(searchLower)
+    );
+  });
 
   return (
     <div>
@@ -212,16 +231,73 @@ export default function Alunos() {
         </div>
       )}
 
-      <h2 className="text-lg font-bold mb-2">Alunos Cadastrados</h2>
-      <ul>
-        {alunos.length === 0 ? (
-          <li className="text-gray-500">Nenhum aluno cadastrado ainda.</li>
-        ) : (
-          alunos.map((a) => (
-            <li key={a.id}>{a.name || a.nome} — Matrícula: {a.matricula || 'N/A'}</li>
-          ))
-        )}
-      </ul>
+      <div className="bg-white p-4 shadow mb-6">
+        <h2 className="text-lg font-bold mb-4">Alunos Cadastrados</h2>
+        
+        {/* Barra de Pesquisa */}
+        <div className="mb-4">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="🔍 Pesquisar por nome, matrícula, ano, turma ou turno..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              🔍
+            </span>
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                title="Limpar pesquisa"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          {searchTerm && (
+            <p className="mt-2 text-sm text-gray-600">
+              {filteredAlunos.length === 0
+                ? "Nenhum aluno encontrado."
+                : `${filteredAlunos.length} aluno(s) encontrado(s).`}
+            </p>
+          )}
+        </div>
+
+        {/* Lista de Alunos */}
+        <ul className="space-y-2">
+          {alunos.length === 0 ? (
+            <li className="text-gray-500 p-4 text-center">Nenhum aluno cadastrado ainda.</li>
+          ) : filteredAlunos.length === 0 && searchTerm ? (
+            <li className="text-gray-500 p-4 text-center">
+              Nenhum aluno encontrado com o termo "{searchTerm}".
+            </li>
+          ) : (
+            filteredAlunos.map((a) => (
+              <li 
+                key={a.id} 
+                className="p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="font-semibold text-gray-800">{a.name || a.nome}</span>
+                    <span className="text-gray-600 ml-2">— Matrícula: {a.matricula || 'N/A'}</span>
+                  </div>
+                  {(a.ano || a.turma || a.turno) && (
+                    <div className="text-sm text-gray-500">
+                      {a.ano && <span className="mr-2">Ano: {a.ano}</span>}
+                      {a.turma && <span className="mr-2">Turma: {a.turma}</span>}
+                      {a.turno && <span>Turno: {a.turno}</span>}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
     </div>
   );
 }
