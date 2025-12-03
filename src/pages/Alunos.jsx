@@ -15,12 +15,30 @@ export default function Alunos() {
   const [searchTerm, setSearchTerm] = useState("");
   const [alunoParaDeletar, setAlunoParaDeletar] = useState(null);
   const [deletando, setDeletando] = useState(false);
+  
+  // Estados de paginação
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 50,
+    total: 0,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false
+  });
 
   // Buscar alunos cadastrados
-  const fetchAlunos = async () => {
+  const fetchAlunos = async (page = 1) => {
     try {
-      const res = await api.get("/alunos");
-      setAlunos(res.data || []);
+      const res = await api.get(`/alunos?page=${page}&limit=50`);
+      // Verificar se a resposta tem estrutura paginada ou é array direto (compatibilidade)
+      if (res.data && res.data.data) {
+        setAlunos(res.data.data || []);
+        setPagination(res.data.pagination || pagination);
+      } else {
+        // Fallback para resposta antiga (array direto)
+        setAlunos(res.data || []);
+      }
     } catch (err) {
       console.error("Erro ao buscar alunos:", err);
       setAlunos([]);
@@ -28,8 +46,8 @@ export default function Alunos() {
   };
 
   useEffect(() => {
-    fetchAlunos();
-  }, []);
+    fetchAlunos(currentPage);
+  }, [currentPage]);
 
   // Submeter formulário
   const handleSubmit = async (e) => {
@@ -65,7 +83,7 @@ export default function Alunos() {
         }
         
         setForm({ nome: "", matricula: "", ano: "", turma: "", turno: "", nascimento: "" });
-        fetchAlunos();
+        fetchAlunos(currentPage);
       }
     } catch (err) {
       console.error("❌ Erro ao cadastrar aluno:", err);
@@ -101,7 +119,7 @@ export default function Alunos() {
       console.log('✅ Aluno deletado com sucesso:', response.data);
       alert("Aluno deletado com sucesso!");
       setAlunoParaDeletar(null);
-      fetchAlunos(); // Atualizar lista
+      fetchAlunos(currentPage); // Atualizar lista
     } catch (err) {
       console.error("❌ Erro ao deletar aluno:", err);
       const errorMessage = err.response?.data?.error || err.response?.data?.details || err.message;
@@ -362,6 +380,49 @@ export default function Alunos() {
           ))
         )}
       </ul>
+      
+      {/* Controles de Paginação */}
+      {pagination.totalPages > 1 && (
+        <div className="mt-6 flex items-center justify-between bg-white p-4 shadow rounded-lg">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                const newPage = currentPage - 1;
+                if (newPage >= 1) {
+                  setCurrentPage(newPage);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              disabled={!pagination.hasPrevPage || currentPage === 1}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+            >
+              ← Anterior
+            </button>
+            
+            <span className="px-4 py-2 text-gray-700">
+              Página {currentPage} de {pagination.totalPages}
+            </span>
+            
+            <button
+              onClick={() => {
+                const newPage = currentPage + 1;
+                if (newPage <= pagination.totalPages) {
+                  setCurrentPage(newPage);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              disabled={!pagination.hasNextPage || currentPage === pagination.totalPages}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+            >
+              Próxima →
+            </button>
+          </div>
+          
+          <div className="text-sm text-gray-600">
+            Total: {pagination.total} aluno(s)
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );

@@ -6,11 +6,29 @@ export default function Funcionarios() {
   const [form, setForm] = useState({ nome: "", cargo: "", nascimento: "" });
   const [funcionarioParaDeletar, setFuncionarioParaDeletar] = useState(null);
   const [deletando, setDeletando] = useState(false);
+  
+  // Estados de paginação
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 50,
+    total: 0,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false
+  });
 
-  const fetchFuncionarios = async () => {
+  const fetchFuncionarios = async (page = 1) => {
     try {
-      const res = await api.get("/funcionarios");
-      setFuncionarios(res.data || []);
+      const res = await api.get(`/funcionarios?page=${page}&limit=50`);
+      // Verificar se a resposta tem estrutura paginada ou é array direto (compatibilidade)
+      if (res.data && res.data.data) {
+        setFuncionarios(res.data.data || []);
+        setPagination(res.data.pagination || pagination);
+      } else {
+        // Fallback para resposta antiga (array direto)
+        setFuncionarios(res.data || []);
+      }
     } catch (err) {
       console.error("Erro ao buscar funcionários:", err);
       setFuncionarios([]);
@@ -18,8 +36,8 @@ export default function Funcionarios() {
   };
 
   useEffect(() => {
-    fetchFuncionarios();
-  }, []);
+    fetchFuncionarios(currentPage);
+  }, [currentPage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +58,7 @@ export default function Funcionarios() {
       if (response.status === 201 || response.status === 200) {
         alert("Funcionário cadastrado com sucesso!");
         setForm({ nome: "", cargo: "", nascimento: "" });
-        fetchFuncionarios();
+        fetchFuncionarios(currentPage);
       }
     } catch (err) {
       console.error("Erro ao cadastrar funcionário:", err);
@@ -56,7 +74,7 @@ export default function Funcionarios() {
       console.log('✅ Funcionário deletado com sucesso:', response.data);
       alert("Funcionário deletado com sucesso!");
       setFuncionarioParaDeletar(null);
-      fetchFuncionarios(); // Atualizar lista
+      fetchFuncionarios(currentPage); // Atualizar lista
     } catch (err) {
       console.error("❌ Erro ao deletar funcionário:", err);
       const errorMessage = err.response?.data?.error || err.response?.data?.details || err.message;
@@ -171,6 +189,49 @@ export default function Funcionarios() {
             ))
           )}
         </ul>
+        
+        {/* Controles de Paginação */}
+        {pagination.totalPages > 1 && (
+          <div className="mt-6 flex items-center justify-between bg-white p-4 shadow rounded-lg">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  const newPage = currentPage - 1;
+                  if (newPage >= 1) {
+                    setCurrentPage(newPage);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                disabled={!pagination.hasPrevPage || currentPage === 1}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+              >
+                ← Anterior
+              </button>
+              
+              <span className="px-4 py-2 text-gray-700">
+                Página {currentPage} de {pagination.totalPages}
+              </span>
+              
+              <button
+                onClick={() => {
+                  const newPage = currentPage + 1;
+                  if (newPage <= pagination.totalPages) {
+                    setCurrentPage(newPage);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                disabled={!pagination.hasNextPage || currentPage === pagination.totalPages}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+              >
+                Próxima →
+              </button>
+            </div>
+            
+            <div className="text-sm text-gray-600">
+              Total: {pagination.total} funcionário(s)
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
