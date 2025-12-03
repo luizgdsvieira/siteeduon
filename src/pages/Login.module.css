@@ -212,7 +212,7 @@
   width: 100%;
   min-height: 600px;
   box-sizing: border-box;
-  background: linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%);
+  background: linear-gradient(135deg, #0A1128 0%, #003DBA 100%); /* linear-gradient(135deg, #1E3A8A 0%, #0A66FF 40%, #4A9EFF 100%); */
   padding: 80px 40px;
   align-items: center;
   justify-content: center;
