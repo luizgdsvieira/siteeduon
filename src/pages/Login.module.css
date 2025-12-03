@@ -370,7 +370,7 @@
   display: flex;
   width: 100%;
   min-height: 300px;
-  background-color: linear-gradient(135deg, #002291 0%, #003DBA 100%);
+  background-color: linear-gradient(135deg, #a5baff 0%, #5b76ad 100%);
   padding: 60px 40px;
   box-sizing: border-box;
 }
