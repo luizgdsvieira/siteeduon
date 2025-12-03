@@ -324,7 +324,7 @@ export default function Alunos() {
 
         {/* Lista de Alunos */}
         <ul className="space-y-2">
-          {alunos.length === 0 ? (
+        {alunos.length === 0 ? (
             <li className="text-gray-500 p-4 text-center">Nenhum aluno cadastrado ainda.</li>
           ) : filteredAlunos.length === 0 && searchTerm ? (
             <li className="text-gray-500 p-4 text-center">
@@ -359,9 +359,9 @@ export default function Alunos() {
                   </button>
                 </div>
               </li>
-            ))
-          )}
-        </ul>
+          ))
+        )}
+      </ul>
       </div>
     </div>
   );
