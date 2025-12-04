@@ -15,7 +15,7 @@ export default function Alunos() {
   const [searchTerm, setSearchTerm] = useState("");
   const [alunoParaDeletar, setAlunoParaDeletar] = useState(null);
   const [deletando, setDeletando] = useState(false);
-  
+
   // Estados de paginação
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({
@@ -37,7 +37,7 @@ export default function Alunos() {
         setPagination(res.data.pagination || pagination);
       } else {
         // Fallback para resposta antiga (array direto)
-        setAlunos(res.data || []);
+      setAlunos(res.data || []);
       }
     } catch (err) {
       console.error("Erro ao buscar alunos:", err);
