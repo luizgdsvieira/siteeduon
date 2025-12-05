@@ -7,6 +7,7 @@ export default function Funcionarios() {
   const [funcionarioParaDeletar, setFuncionarioParaDeletar] = useState(null);
   const [deletando, setDeletando] = useState(false);
   const [novasCredenciais, setNovasCredenciais] = useState(null);
+  const [erroCredenciais, setErroCredenciais] = useState(null);
   
   // Estados de paginação
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,8 +63,16 @@ export default function Funcionarios() {
           ...response.data.credentials,
           funcionario: funcionarioCriado.name || form.nome
         });
+        setErroCredenciais(null);
       } else {
         setNovasCredenciais(null);
+      }
+
+      // Guardar erro de geração de credenciais (se veio do backend)
+      if (response.data?.credentialsError) {
+        setErroCredenciais(response.data.credentialsError);
+      } else {
+        setErroCredenciais(null);
       }
 
       // Verificar se a resposta foi bem-sucedida
@@ -107,6 +116,14 @@ export default function Funcionarios() {
           <p className="mb-1">Usuário: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.username}</code></p>
           <p className="mb-2">Senha: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.password}</code></p>
           <p className="text-sm text-green-700">Anote e entregue estas credenciais ao fiscal. Elas não serão exibidas novamente.</p>
+        </div>
+      )}
+
+      {erroCredenciais && (
+        <div className="mb-4 p-4 rounded-lg border border-yellow-300 bg-yellow-50 text-yellow-800 shadow-sm">
+          <h3 className="font-semibold text-lg mb-2">Aviso: não foi possível gerar o login do fiscal</h3>
+          <p className="mb-1">Tente novamente ou contate o suporte.</p>
+          <p className="text-sm text-yellow-700 break-words">Detalhe: {erroCredenciais}</p>
         </div>
       )}
 
