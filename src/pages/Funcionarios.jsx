@@ -6,6 +6,7 @@ export default function Funcionarios() {
   const [form, setForm] = useState({ nome: "", cargo: "", nascimento: "" });
   const [funcionarioParaDeletar, setFuncionarioParaDeletar] = useState(null);
   const [deletando, setDeletando] = useState(false);
+  const [novasCredenciais, setNovasCredenciais] = useState(null);
   
   // Estados de paginação
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,6 +55,17 @@ export default function Funcionarios() {
       console.log('✅ Status:', response.status);
       console.log('✅ Dados:', response.data);
       
+      // Guardar credenciais geradas (se existirem)
+      if (response.data?.credentials) {
+        const funcionarioCriado = response.data.funcionario || response.data.staff || {};
+        setNovasCredenciais({
+          ...response.data.credentials,
+          funcionario: funcionarioCriado.name || form.nome
+        });
+      } else {
+        setNovasCredenciais(null);
+      }
+
       // Verificar se a resposta foi bem-sucedida
       if (response.status === 201 || response.status === 200) {
         alert("Funcionário cadastrado com sucesso!");
@@ -87,6 +99,16 @@ export default function Funcionarios() {
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">Cadastro de Funcionários</h1>
+
+      {novasCredenciais && (
+        <div className="mb-4 p-4 rounded-lg border border-green-300 bg-green-50 text-green-800 shadow-sm">
+          <h3 className="font-semibold text-lg mb-2">Login gerado para o fiscal</h3>
+          <p className="mb-1">Funcionário: <span className="font-medium">{novasCredenciais.funcionario || '—'}</span></p>
+          <p className="mb-1">Usuário: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.username}</code></p>
+          <p className="mb-2">Senha: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.password}</code></p>
+          <p className="text-sm text-green-700">Anote e entregue estas credenciais ao fiscal. Elas não serão exibidas novamente.</p>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="bg-white p-4 shadow mb-6">
         <div className="grid grid-cols-2 gap-4">
