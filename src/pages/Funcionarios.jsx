@@ -74,7 +74,7 @@ export default function Funcionarios() {
       } else {
         setErroCredenciais(null);
       }
-
+      
       // Verificar se a resposta foi bem-sucedida
       if (response.status === 201 || response.status === 200) {
         alert("Funcionário cadastrado com sucesso!");
