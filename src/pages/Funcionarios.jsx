@@ -52,40 +52,29 @@ export default function Funcionarios() {
       delete funcionarioData.nome; // Remove 'nome' para evitar confusão
       
       const response = await api.post("/funcionarios", funcionarioData);
-      console.log('✅ Resposta do servidor:', response);
-      console.log('✅ Status:', response.status);
-      console.log('✅ Dados:', response.data);
-      console.log('✅ Credenciais:', response.data?.credentials);
-      console.log('✅ Funcionário:', response.data?.funcionario);
       
       // Guardar credenciais geradas (se existirem)
       if (response.data?.credentials) {
         const funcionarioCriado = response.data.funcionario || response.data.staff || {};
-        console.log('✅ Funcionário criado:', funcionarioCriado);
         setNovasCredenciais({
           ...response.data.credentials,
           funcionario: funcionarioCriado.name || form.nome
         });
         setErroCredenciais(null);
       } else {
-        console.warn('⚠️ Nenhuma credencial encontrada na resposta');
         setNovasCredenciais(null);
-        
-        // Verificar se houve erro na geração de credenciais
-        if (response.data?.geracao?.login && response.data.geracao.login.includes('Erro')) {
-          setErroCredenciais(response.data.geracao.login);
-        } else {
-          setErroCredenciais(null);
-        }
+      }
+
+      // Guardar erro de geração de credenciais (se veio do backend)
+      if (response.data?.credentialsError) {
+        setErroCredenciais(response.data.credentialsError);
+      } else {
+        setErroCredenciais(null);
       }
       
       // Verificar se a resposta foi bem-sucedida
       if (response.status === 201 || response.status === 200) {
-        // Não mostrar alert se já temos credenciais ou erro sendo exibidos (já definidos acima)
-        const temCredenciaisOuErro = response.data?.credentials || (response.data?.geracao?.login && response.data.geracao.login.includes('Erro'));
-        if (!temCredenciaisOuErro) {
-          alert("Funcionário cadastrado com sucesso!");
-        }
+        alert("Funcionário cadastrado com sucesso!");
         setForm({ nome: "", cargo: "", nascimento: "" });
         fetchFuncionarios(currentPage);
       }
@@ -118,32 +107,18 @@ export default function Funcionarios() {
       <h1 className="text-xl font-bold mb-4">Cadastro de Funcionários</h1>
 
       {novasCredenciais && (
-        <div className="mb-4 p-4 rounded-lg border border-green-300 bg-green-50 text-green-800 shadow-sm relative">
-          <button
-            onClick={() => setNovasCredenciais(null)}
-            className="absolute top-2 right-2 text-green-700 hover:text-green-900 text-xl font-bold"
-            title="Fechar"
-          >
-            ×
-          </button>
-          <h3 className="font-semibold text-lg mb-2">✅ Login gerado com sucesso!</h3>
+        <div className="mb-4 p-4 rounded-lg border border-green-300 bg-green-50 text-green-800 shadow-sm">
+          <h3 className="font-semibold text-lg mb-2">Login gerado para o fiscal</h3>
           <p className="mb-1">Funcionário: <span className="font-medium">{novasCredenciais.funcionario || '—'}</span></p>
-          <p className="mb-1">Usuário: <code className="px-2 py-1 bg-white border rounded font-mono">{novasCredenciais.username}</code></p>
-          <p className="mb-2">Senha: <code className="px-2 py-1 bg-white border rounded font-mono">{novasCredenciais.password}</code></p>
-          <p className="text-sm text-green-700 font-medium">⚠️ Anote e entregue estas credenciais ao fiscal. Elas não serão exibidas novamente.</p>
+          <p className="mb-1">Usuário: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.username}</code></p>
+          <p className="mb-2">Senha: <code className="px-2 py-1 bg-white border rounded">{novasCredenciais.password}</code></p>
+          <p className="text-sm text-green-700">Anote e entregue estas credenciais ao fiscal. Elas não serão exibidas novamente.</p>
         </div>
       )}
 
       {erroCredenciais && (
-        <div className="mb-4 p-4 rounded-lg border border-yellow-300 bg-yellow-50 text-yellow-800 shadow-sm relative">
-          <button
-            onClick={() => setErroCredenciais(null)}
-            className="absolute top-2 right-2 text-yellow-700 hover:text-yellow-900 text-xl font-bold"
-            title="Fechar"
-          >
-            ×
-          </button>
-          <h3 className="font-semibold text-lg mb-2">⚠️ Aviso: não foi possível gerar o login do fiscal</h3>
+        <div className="mb-4 p-4 rounded-lg border border-yellow-300 bg-yellow-50 text-yellow-800 shadow-sm">
+          <h3 className="font-semibold text-lg mb-2">Aviso: não foi possível gerar o login do fiscal</h3>
           <p className="mb-1">Tente novamente ou contate o suporte.</p>
           <p className="text-sm text-yellow-700 break-words">Detalhe: {erroCredenciais}</p>
         </div>
